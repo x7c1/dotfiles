@@ -12,6 +12,7 @@ Bundle 'Align'
 "repos on github
 Bundle 'gmarik/vundle'
 Bundle 'kana/vim-surround'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
 Bundle 'thinca/vim-ref'
@@ -58,6 +59,10 @@ let g:unite_enable_start_insert=1
 
 "vim-ref
 au filetype ref-phpmanual nnoremap <silent> <buffer> <esc><esc> :q<cr>
+
+" nerdcommenter
+" 未対応タイプのエラーを非表示に
+let NERDShutUp = 1
 
 syntax on
 set noswapfile
