@@ -116,9 +116,9 @@ noremap <C-g><C-p> :tabp<CR>
 inoremap <C-g><C-n> <ESC>:tabn<CR>
 inoremap <C-g><C-p> <ESC>:tabp<CR>
 
-" 入力補完時などの色設定
-hi Pmenu ctermbg=7 ctermfg=0
-hi PmenuSel ctermbg=1 ctermfg=0
+" 補完候補の色設定
+hi Pmenu ctermbg=white ctermfg=black
+hi PmenuSel ctermbg=cyan ctermfg=black
 
 " 選択中の範囲を検索ワードに
 vnoremap * y/<C-r>0<CR>
