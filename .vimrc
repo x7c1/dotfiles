@@ -58,6 +58,7 @@ let g:unite_enable_start_insert=1
 "}}}
 
 "vim-ref
+"esc esc で閉じる
 au filetype ref-phpmanual nnoremap <silent> <buffer> <esc><esc> :q<cr>
 
 " nerdcommenter
