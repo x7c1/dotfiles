@@ -15,6 +15,7 @@ Bundle 'kana/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/unite.vim'
+Bundle 'sgur/unite-qf'
 Bundle 'thinca/vim-ref'
 
 filetype plugin indent on
