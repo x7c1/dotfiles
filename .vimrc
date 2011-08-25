@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kana/vim-surround'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimfiler'
 Bundle 'Shougo/unite.vim'
 Bundle 'sgur/unite-qf'
 Bundle 'thinca/vim-ref'
@@ -58,6 +59,9 @@ au filetype unite inoremap <silent> <buffer> <expr><c-k> unite#do_action('vsplit
 let g:unite_enable_start_insert=1
 
 "}}}
+
+"vimfiler
+let g:vimfiler_safe_mode_by_default = 0
 
 "vim-ref
 "esc esc で閉じる
