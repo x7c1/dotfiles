@@ -75,6 +75,7 @@ set noexpandtab
 
 "case-insensitive while all strings are lowercase
 set smartcase
+set ignorecase
 
 " 検索結果ハイライト
 set hlsearch
