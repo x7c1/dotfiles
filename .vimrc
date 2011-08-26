@@ -8,6 +8,7 @@ call vundle#rc()
 
 "repos on vim-scripts
 Bundle 'Align'
+Bundle 'actionscript.vim'
 
 "repos on github
 Bundle 'gmarik/vundle'
@@ -68,6 +69,9 @@ let g:vimfiler_safe_mode_by_default = 0
 "vim-ref
 "esc esc で閉じる
 au filetype ref-phpmanual nnoremap <silent> <buffer> <esc><esc> :q<cr>
+
+"actionscript.vim
+au BufNewFile,BufRead *.as set filetype=actionscript
 
 " nerdcommenter
 " 未対応タイプのエラーを非表示に
