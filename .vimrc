@@ -38,6 +38,7 @@ let g:neocomplcache_enable_underbar_completion = 1
 
 "unite {{{
 
+"rf. http://vim-users.jp/2009/08/hack-59/
 nnoremap [Unite] <nop>
 nmap  gu [Unite]
 nnoremap [Unite]b :Unite buffer<cr>
