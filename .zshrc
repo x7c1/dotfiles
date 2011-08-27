@@ -214,6 +214,11 @@ if [ "$TERM" = "screen" ]; then
 	chpwd
 fi
 
+# http://d.hatena.ne.jp/voidy21/20090902/1251918174
+function cd(){
+    builtin cd $@ && ls;
+}
+
 ## load user .zshrc configuration file
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
