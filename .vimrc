@@ -41,10 +41,10 @@ let g:neocomplcache_enable_underbar_completion = 1
 nnoremap [Unite] <nop>
 nmap  gu [Unite]
 nnoremap [Unite]b :Unite buffer<cr>
-nnoremap [Unite]f :UniteWithBufferDir file -buffer-name=file<cr>
+nnoremap [Unite]f :UniteWithBufferDir file -buffer-name=files<cr>
 nnoremap [Unite]l :Unite line<cr>
 nnoremap [Unite]m :Unite file_mru<cr>
-nnoremap [Unite]r :UniteWithBufferDir file_rec -buffer-name=file_rec<cr>
+nnoremap [Unite]r :UniteWithBufferDir file_rec -buffer-name=files<cr>
 nnoremap [Unite]s :Unite source<cr>
 nnoremap [Unite]t :Unite tab<cr>
 
