@@ -49,7 +49,6 @@ nnoremap [Unite]s :Unite source<cr>
 nnoremap [Unite]t :Unite tab<cr>
 
 au filetype unite nnoremap <silent> <buffer> <esc><esc> :q<cr>
-au filetype unite inoremap <silent> <buffer> <esc><esc><esc>:q<cr>
 au filetype unite nnoremap <silent> <buffer> <expr><c-l> unite#do_action('tabopen')
 au filetype unite inoremap <silent> <buffer> <expr><c-l> unite#do_action('tabopen')
 au filetype unite nnoremap <silent> <buffer> <expr><c-j> unite#do_action('split')
