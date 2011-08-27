@@ -38,16 +38,15 @@ let g:neocomplcache_enable_underbar_completion = 1
 
 "unite {{{
 
-"from current directory
-nnoremap <C-g><C-f><C-f> :UniteWithBufferDir file -buffer-name=file<CR>
-nnoremap <C-g><C-f><C-r> :UniteWithBufferDir file_rec -buffer-name=file_rec<CR>
-nnoremap <C-g><C-f><C-m> :Unite file_mru<CR>
-
-nnoremap <C-g><C-b> :Unite buffer<CR>
-nnoremap <C-g><C-s> :Unite source<CR>
-nnoremap <C-g><C-t> :Unite tab<CR>
-nnoremap <C-g><C-l> :Unite line<CR>
-nnoremap <C-g><C-m><C-p> :Unite ref/phpmanual<CR>
+nnoremap [Unite] <nop>
+nmap  gu [Unite]
+nnoremap [Unite]b :Unite buffer<cr>
+nnoremap [Unite]f :UniteWithBufferDir file -buffer-name=file<cr>
+nnoremap [Unite]l :Unite line<cr>
+nnoremap [Unite]m :Unite file_mru<cr>
+nnoremap [Unite]r :UniteWithBufferDir file_rec -buffer-name=file_rec<cr>
+nnoremap [Unite]s :Unite source<cr>
+nnoremap [Unite]t :Unite tab<cr>
 
 au filetype unite nnoremap <silent> <buffer> <esc><esc> :q<cr>
 au filetype unite inoremap <silent> <buffer> <esc><esc><esc>:q<cr>
