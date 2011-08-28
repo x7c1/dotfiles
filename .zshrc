@@ -129,13 +129,17 @@ alias su="su -l"
 
 ## terminal configuration
 #
-case "${TERM}" in
-screen|xterm-256color)
-    TERM=xterm-color
-    ;;
-esac
+function set_term_conf(){
 
 case "${TERM}" in
+screen|xterm-256color)
+    local current_term=xterm-color
+    ;;
+*)
+    local current_term=$TERM
+esac
+
+case "${current_term}" in
 xterm|xterm-color)
     export LSCOLORS=exfxcxdxbxegedabagacad
     export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
@@ -165,13 +169,16 @@ esac
 
 # set terminal title including current directory
 #
-case "${TERM}" in
+case "{$current_term}" in
 xterm|xterm-color|kterm|kterm-color)
     precmd() {
         echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
     }
     ;;
 esac
+
+}
+set_term_conf
 
 zstyle ':completion:*:default' menu select=1
 
