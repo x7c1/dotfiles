@@ -186,39 +186,37 @@ zstyle ':completion:*:default' menu select=1
 # http://subtech.g.hatena.ne.jp/secondlife/20100427/1272350109
 
 if [ "$TERM" = "screen" ]; then
-	chpwd () {echo -n "_`dirs`\\" }
-	preexec() {
-		emulate -L zsh
-		local -a cmd; cmd=(${(z)2})
-		case $cmd[1] in
-			fg)
-				if (( $#cmd == 1)); then
-					cmd=(builtin jobs -l %+)
-				else
-					cmd=(builtin jobs -l $cmd[2])
-				fi
-				;;
-			%*)
-				cmd=(builtin jobs -l $cmd[1])
-				;;
-			cd)
-				if (( $#cmd == 2)); then
-					cmd[1]=$cmd[2]
-				fi
-				;&
-			*)
-				echo -n "k$cmd[1]:t\\"
-				return
-				;;
-		esac
-
-		local -A jt; jt=(${(kv)jobtexts})
-
-		$cmd >>(read num rest
-				cmd=(${(z)${(e):-\$jt$num}})
-				echo -n "k$cmd[1]:t\\") 2>/dev/null
-	}
-	chpwd
+    chpwd () {echo -n "_`dirs`\\" }
+    preexec() {
+        emulate -L zsh
+        local -a cmd; cmd=(${(z)2})
+        case $cmd[1] in
+            fg)
+                if (( $#cmd == 1)); then
+                    cmd=(builtin jobs -l %+)
+                else
+                    cmd=(builtin jobs -l $cmd[2])
+                fi
+                ;;
+            %*)
+                cmd=(builtin jobs -l $cmd[1])
+                ;;
+            cd)
+                if (( $#cmd == 2)); then
+                    cmd[1]=$cmd[2]
+                fi
+                ;&
+            *)
+                echo -n "k$cmd[1]:t\\"
+                return
+                ;;
+        esac
+        local -A jt; jt=(${(kv)jobtexts})
+        $cmd >>(read num rest
+                cmd=(${(z)${(e):-\$jt$num}})
+                echo -n "k$cmd[1]:t\\") 2>/dev/null
+    }
+    chpwd
 fi
 
 # http://d.hatena.ne.jp/voidy21/20090902/1251918174
