@@ -59,6 +59,7 @@ au filetype unite inoremap <silent> <buffer> <expr><c-k> unite#do_action('vsplit
 
 "start with insert-mode
 let g:unite_enable_start_insert=1
+call unite#util#set_default('g:unite_source_file_mru_limit', 1000)
 
 "}}}
 
