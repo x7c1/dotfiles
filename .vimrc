@@ -63,6 +63,7 @@ au filetype unite nnoremap <silent><buffer><s-k> k:call unite#mappings#do_action
 
 "start with insert-mode
 let g:unite_enable_start_insert=1
+call unite#util#set_default('g:unite_source_file_mru_limit', 1000)
 
 "}}}
 
