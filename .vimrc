@@ -57,6 +57,9 @@ au filetype unite inoremap <silent> <buffer> <expr><c-j> unite#do_action('split'
 au filetype unite nnoremap <silent> <buffer> <expr><c-k> unite#do_action('vsplit')
 au filetype unite inoremap <silent> <buffer> <expr><c-k> unite#do_action('vsplit')
 au filetype unite inoremap <silent> <buffer> <expr><c-i> unite#do_action('insert')
+au filetype unite nnoremap <silent> <buffer> <expr><c-p> unite#do_action('persist_open')
+au filetype unite nnoremap <silent><buffer><s-j> j:call unite#mappings#do_action('persist_open')<cr>
+au filetype unite nnoremap <silent><buffer><s-k> k:call unite#mappings#do_action('persist_open')<cr>
 
 "start with insert-mode
 let g:unite_enable_start_insert=1
