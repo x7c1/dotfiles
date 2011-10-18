@@ -31,9 +31,17 @@ filetype plugin indent on
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_ignore_case = 1
+let g:neocomplcache_snippets_dir = $HOME . '/.vim/snippets'
 
 "アンダーバー区切りの補完を有効に
 let g:neocomplcache_enable_underbar_completion = 1
+
+" http://vim-users.jp/2010/11/hack185/
+imap <c-k>    <plug>(neocomplcache_snippets_expand)
+smap <c-k>    <plug>(neocomplcache_snippets_expand)
+inoremap <expr><c-g> neocomplcache#undo_completion()
+inoremap <expr><c-l> neocomplcache#complete_common_string()
+
 "}}}
 
 "unite {{{
