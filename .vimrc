@@ -75,6 +75,11 @@ call unite#util#set_default('g:unite_source_file_mru_limit', 1000)
 
 "}}}
 
+"vimshell
+nnoremap [VimShell] <nop>
+nmap  gv [VimShell]
+nnoremap [VimShell]t :VimShellTab<cr>
+
 "vimfiler
 let g:vimfiler_safe_mode_by_default = 0
 
