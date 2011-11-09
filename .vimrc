@@ -9,6 +9,7 @@ call vundle#rc()
 "repos on vim-scripts
 Bundle 'Align'
 Bundle 'actionscript.vim'
+Bundle 'OOP-javascript-indentation'
 
 "repos on github
 Bundle 'gmarik/vundle'
