@@ -1,27 +1,32 @@
 
-"vundle {{{
+"neobundle {{{
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/neobundle.vim.git/
+"call vundle#rc()
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim.git/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
 "repos on vim-scripts
-Bundle 'Align'
-Bundle 'actionscript.vim'
-Bundle 'OOP-javascript-indentation'
+NeoBundle 'Align'
+NeoBundle 'actionscript.vim'
+NeoBundle 'OOP-javascript-indentation'
 
 "repos on github
-Bundle 'gmarik/vundle'
-Bundle 'kana/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimfiler'
-Bundle 'Shougo/vimproc'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/unite.vim'
-Bundle 'sgur/unite-qf'
-Bundle 'thinca/vim-ref'
+NeoBundle 'gmarik/vundle'
+NeoBundle 'kana/vim-surround'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'sgur/unite-qf'
+NeoBundle 'thinca/vim-ref'
 
 filetype plugin indent on
 "}}}
