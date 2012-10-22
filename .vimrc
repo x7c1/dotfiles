@@ -56,7 +56,7 @@ inoremap <expr><c-l> neocomplcache#complete_common_string()
 nnoremap [Unite] <nop>
 nmap  gu [Unite]
 nnoremap [Unite]b :Unite buffer<cr>
-nnoremap [Unite]f :UniteWithBufferDir file -buffer-name=files<cr>
+nnoremap [Unite]f :UniteWithBufferDir file -buffer-name=files file/new<cr>
 nnoremap [Unite]l :Unite line<cr>
 nnoremap [Unite]m :Unite file_mru<cr>
 nnoremap [Unite]r :UniteWithBufferDir file_rec -buffer-name=files<cr>
