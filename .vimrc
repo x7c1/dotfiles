@@ -14,7 +14,6 @@ NeoBundle 'actionscript.vim'
 NeoBundle 'OOP-javascript-indentation'
 
 "repos on github
-NeoBundle 'gmarik/vundle'
 NeoBundle 'kana/vim-surround'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'Shougo/neocomplcache'
