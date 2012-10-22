@@ -3,9 +3,6 @@
 set nocompatible
 filetype off
 
-"set rtp+=~/.vim/neobundle.vim.git/
-"call vundle#rc()
-
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim.git/
   call neobundle#rc(expand('~/.vim/bundle/'))
