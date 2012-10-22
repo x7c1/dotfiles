@@ -102,6 +102,12 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
+" タブ文字などをグレーに
+highlight SpecialKey ctermfg=7
+
+" 検索結果を bg:青 fg:白 に
+highlight Search ctermbg=4 ctermfg=7
+
 "case-insensitive while all strings are lowercase
 set smartcase
 set ignorecase
