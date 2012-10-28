@@ -4,3 +4,6 @@
 	st = status
 	di = diff
 
+[color]
+	diff = auto
+	status = auto
