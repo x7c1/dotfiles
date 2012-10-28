@@ -3,7 +3,7 @@
 setopt nolistbeep
 
 # vim like keybind
-#bindkey -v
+bindkey -v
 
 bindkey '^r' history-incremental-search-backward
 
