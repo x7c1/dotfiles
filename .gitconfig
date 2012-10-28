@@ -2,3 +2,5 @@
 	path = .gitconfig.mine
 [alias]
 	st = status
+	di = diff
+
