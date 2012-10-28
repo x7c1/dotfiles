@@ -102,12 +102,6 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
-" タブ文字などをグレーに
-highlight SpecialKey ctermfg=7
-
-" 検索結果を bg:青 fg:白 に
-highlight Search ctermbg=4 ctermfg=7
-
 "case-insensitive while all strings are lowercase
 set smartcase
 set ignorecase
@@ -160,18 +154,11 @@ noremap <C-g><C-p> :tabp<CR>
 inoremap <C-g><C-n> <ESC>:tabn<CR>
 inoremap <C-g><C-p> <ESC>:tabp<CR>
 
-" 補完候補の色設定
-hi Pmenu ctermbg=white ctermfg=black
-hi PmenuSel ctermbg=cyan ctermfg=black
-
 " 選択中の範囲を検索ワードに
 vnoremap * y/<C-r>0<CR>
 
 " Esc 二回でハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
-
-" 対括弧のハイライトは薄色で
-highlight MatchParen ctermbg=lightgrey guibg=lightgrey
 
 if filereadable(expand('~/.vimrc.local'))
     " http://vim-users.jp/2009/12/hack108/
