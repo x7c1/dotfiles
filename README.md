@@ -9,3 +9,9 @@
 * Terminal > Settings > import
 
  > theme/x7c1_Novel.terminal
+ 
+* create symbolic links as necessary
+
+ ```
+ ln -s `pwd`/.zshrc.common $HOME/.zshrc.common
+ ```
