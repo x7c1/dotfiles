@@ -28,3 +28,5 @@ function cd(){
     builtin cd $@ && ls;
 }
 
+RPROMPT="%* %~"
+
