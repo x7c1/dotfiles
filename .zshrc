@@ -24,6 +24,9 @@ export LANG=en_US.UTF-8
 
 export EDITOR='vim'
 
+# no duplicate
+setopt HIST_IGNORE_ALL_DUPS
+
 # http://blog.zoncoen.net/blog/2014/01/14/percol-autojump-with-zsh/
 function exists { which $1 &> /dev/null }
 
@@ -31,7 +34,7 @@ if exists percol; then
     function percol_select_history() {
         local tac
         exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | sort | uniq | eval $tac | percol --query "$LBUFFER")
+        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
         zle -R -c               # refresh
     }
