@@ -39,6 +39,8 @@ if exists percol; then
     bindkey '^R' percol_select_history
 fi
 
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 ## load user .zshrc configuration file
 [ -f ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
 
