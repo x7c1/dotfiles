@@ -7,7 +7,7 @@ source $HOME/.zshrc.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/.zshrc.common
-source $HOME/.zshrc.percol
+source $HOME/.zshrc.peco
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
