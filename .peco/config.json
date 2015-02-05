@@ -1,7 +1,7 @@
 {
     "Style": {
         "Basic": ["on_default", "default"],
-        "SavedSelection": ["bold", "on_yellow", "white"],
+        "SavedSelection": ["bold", "reverse", "on_blue", "white"],
         "Selected": ["reverse", "on_red", "white"],
         "Query": ["white", "default"],
         "Matched": ["reverse", "on_blue", "white"]
