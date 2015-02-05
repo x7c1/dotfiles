@@ -8,7 +8,7 @@ if exists peco; then
         exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
         BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
         CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
+        zle reset-prompt
     }
     zle -N peco_select_history
     bindkey '^g^k' peco_select_history
