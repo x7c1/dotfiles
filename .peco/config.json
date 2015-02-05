@@ -2,9 +2,9 @@
     "Style": {
         "Basic": ["on_default", "default"],
         "SavedSelection": ["bold", "on_yellow", "white"],
-        "Selected": ["underline", "on_blue", "white"],
+        "Selected": ["reverse", "on_red", "white"],
         "Query": ["white", "default"],
-        "Matched": ["white", "on_blue"]
+        "Matched": ["reverse", "on_blue", "white"]
     }
 }
 
