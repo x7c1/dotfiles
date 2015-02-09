@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<root>
+	<list>
+		<item>
+			<name>Swap Kana and Escape</name>
+			<identifier>private.swap_kana_and_escape</identifier>
+			<autogen>--KeyToKey-- KeyCode::JIS_KANA, KeyCode::ESCAPE</autogen>
+			<autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::JIS_KANA</autogen>
+		</item>
+        <item>
+            <name>Shift to EISUU/KANA</name>
+            <identifier>private.shift_to_eisuu_kana</identifier>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_L, KeyCode::SHIFT_L, KeyCode::JIS_EISUU</autogen>
+            <autogen>--KeyOverlaidModifier-- KeyCode::SHIFT_R, KeyCode::SHIFT_R, KeyCode::JIS_KANA</autogen>
+        </item>
+	</list>
+</root>
