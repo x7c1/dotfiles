@@ -15,3 +15,7 @@
  ```
  ln -s `pwd`/.zshrc.common $HOME/.zshrc.common
  ```
+ (or more simply)
+ ```
+ ruby init-links.rb .zshrc .zshrc.common .vimrc
+ ```
