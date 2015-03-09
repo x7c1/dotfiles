@@ -117,7 +117,7 @@ let g:vimfiler_safe_mode_by_default = 0
 "esc esc で閉じる
 au filetype ref-phpmanual nnoremap <silent> <buffer> <esc><esc> :q<cr>
 
-au filetype ruby setlocal ts=2 sw=2 expandtab
+au filetype ruby setlocal ts=2 sw=2 expandtab number
 
 "actionscript.vim
 au BufNewFile,BufRead *.as set filetype=actionscript
