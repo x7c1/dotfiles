@@ -11,7 +11,6 @@ if exists peco; then
         zle reset-prompt
     }
     zle -N peco_select_history
-    bindkey '^g^k' peco_select_history
 fi
 
 # http://stillpedant.hatenablog.com/entry/percol-cd-history
@@ -54,9 +53,6 @@ function peco_insert_history() {
 }
 zle -N peco_insert_history
 
-bindkey '^g^j' peco_cd_history
-bindkey '^g^h' peco_insert_history
-
 function peco_select_from_git_status(){
     git status --porcelain | \
     peco | \
@@ -69,7 +65,10 @@ function peco_insert_selected_git_files(){
     CURSOR=$#LBUFFER
     zle reset-prompt
 }
-
 zle -N peco_insert_selected_git_files
+
+bindkey '^g^j' peco_cd_history
+bindkey '^g^h' peco_insert_history
 bindkey "^g^s" peco_insert_selected_git_files
+bindkey '^g^k' peco_select_history
 
