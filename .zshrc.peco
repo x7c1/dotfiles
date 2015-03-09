@@ -69,8 +69,22 @@ function peco_insert_selected_git_files(){
 }
 zle -N peco_insert_selected_git_files
 
+function peco_select_from_ps(){
+    ps aux | \
+    peco | \
+    awk -F ' ' '{print $2}' | \
+    tr '\n' ' '
+}
+function peco_insert_selected_ps_items(){
+    LBUFFER+=$(peco_select_from_ps)
+    CURSOR=$#LBUFFER
+    zle reset-prompt
+}
+zle -N peco_insert_selected_ps_items
+
 bindkey '^g^j' peco_cd_history
 bindkey '^g^h' peco_insert_history
 bindkey "^g^s" peco_insert_selected_git_files
+bindkey "^g^p" peco_insert_selected_ps_items
 bindkey '^g^k' peco_select_history
 
