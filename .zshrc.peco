@@ -75,6 +75,9 @@ function peco_select_from_ps(){
     awk -F ' ' '{print $2}' | \
     tr '\n' ' '
 }
+
+# ps の結果からプロセスを選択してその ID を
+# 現在のカーソル位置に挿入するウィジェット
 function peco_insert_selected_ps_items(){
     LBUFFER+=$(peco_select_from_ps)
     CURSOR=$#LBUFFER
