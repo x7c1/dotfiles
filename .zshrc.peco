@@ -60,6 +60,8 @@ function peco_select_from_git_status(){
     tr '\n' ' '
 }
 
+# git status の結果からファイルを選択して
+# 現在のカーソル位置に挿入するウィジェット
 function peco_insert_selected_git_files(){
     LBUFFER+=$(peco_select_from_git_status)
     CURSOR=$#LBUFFER
