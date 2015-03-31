@@ -106,10 +106,52 @@ function peco_insert_selected_git_hash() {
 }
 zle -N peco_insert_selected_git_hash
 
+function peco_select_from_docker_ps(){
+    if ! exists docker; then
+        echo 'brew install docker'
+        return
+    fi
+    docker ps | \
+    peco | \
+    awk -F ' ' '{print $1}' | \
+    tr '\n' ' '
+}
+
+# docker ps の結果からコンテナを選択してその ID を
+# 現在のカーソル位置に挿入するウィジェット
+function peco_insert_selected_docker_ps_items(){
+    LBUFFER+=$(peco_select_from_docker_ps)
+    CURSOR=$#LBUFFER
+    zle reset-prompt
+}
+zle -N peco_insert_selected_docker_ps_items
+
+function peco_select_from_docker_image(){
+    if ! exists docker; then
+        echo 'brew install docker'
+        return
+    fi
+    docker images | \
+    peco | \
+    awk -F ' ' '{print $3}' | \
+    tr '\n' ' '
+}
+# docker images の結果からイメージを選択してその ID を
+# 現在のカーソル位置に挿入するウィジェット
+function peco_insert_selected_docker_images(){
+    LBUFFER+=$(peco_select_from_docker_image)
+    CURSOR=$#LBUFFER
+    zle reset-prompt
+}
+zle -N peco_insert_selected_docker_images
+
 bindkey '^g^j' peco_cd_history
 bindkey '^g^h' peco_insert_history
 bindkey "^g^s" peco_insert_selected_git_files
 bindkey "^g^p" peco_insert_selected_ps_items
 bindkey '^g^l' peco_insert_selected_git_hash
 bindkey '^g^k' peco_select_history
+
+bindkey '^gdp' peco_insert_selected_docker_ps_items
+bindkey '^gdi' peco_insert_selected_docker_images
 
