@@ -11,5 +11,21 @@ create_symbolic_link = -> flow do
   `#{line}`
 end
 
-ARGV.map(&to_flow).each &create_symbolic_link
+targets = case
+  when ARGV == ["--all"]
+    [
+      ".oh-my-zsh-custom",
+      ".peco",
+      ".screenrc",
+      ".vimrc",
+      ".zshrc",
+      ".zshrc.common",
+      ".zshrc.oh-my-zsh",
+      ".zshrc.peco",
+    ]
+  else
+    ARGV.select{ |x| !x.start_with? "--" }
+  end
+
+targets.map(&to_flow).each &create_symbolic_link
 
