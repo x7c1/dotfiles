@@ -1,6 +1,7 @@
 #### Prerequisite ####
 
 * Homebrew : http://brew.sh/
+* oh-my-zsh : http://ohmyz.sh/
 
 #### Usage ####
 
