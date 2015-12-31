@@ -1,3 +1,7 @@
+#### Prerequisite ####
+
+* Homebrew : http://brew.sh/
+
 #### Usage ####
 
 * .vimrc.local
