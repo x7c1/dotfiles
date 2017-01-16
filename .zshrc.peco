@@ -56,7 +56,7 @@ zle -N peco_insert_history
 function peco_select_from_git_status(){
     git status --porcelain | \
     peco | \
-    awk -F ' ' '{print $NF}' | \
+    awk -F ' ' '{for(i=2;i<NF;i++){printf("%s%s",$i,OFS="\\ ")}print $NF}' | \
     tr '\n' ' '
 }
 
