@@ -24,3 +24,4 @@ if matched:
 else:
     logging.debug('sth')
     keyboard.send_keys(s)
+
