@@ -67,6 +67,7 @@ plant './with_ctrl',
     :e => '<end>',
     :f => '<right>',
     :h => '<backspace>',
+    :k => '<shift>+<end><delete>',
     :n => '<down>',
     :p => '<up>',
   }
