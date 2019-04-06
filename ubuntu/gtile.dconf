@@ -1,0 +1,17 @@
+[/]
+insets-secondary-bottom=0
+resize1='16x12 5:0 15:11'
+resize2='16x12 0:0 10:11'
+preset-resize-1=['<Primary><Alt>l']
+grid-sizes='16x12,8x6,6x4'
+preset-resize-2=['<Primary><Alt>h']
+max-timeout=2100
+auto-close=true
+window-margin=0
+debug=false
+global-presets=false
+show-toggle-tiling=['<Primary><Alt>o']
+insets-primary-top=0
+animation=false
+insets-primary-bottom=0
+show-icon=true
