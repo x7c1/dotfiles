@@ -1,0 +1,7 @@
+partial modifier_keys
+xkb_symbols "space_sides" {
+  replace key <LALT> { [ Super_L ] };
+  replace key <MUHE> { [ Alt_L ] };
+  replace key <HENK> { [ Escape ] };
+};
+
