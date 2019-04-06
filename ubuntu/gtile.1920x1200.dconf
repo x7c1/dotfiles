@@ -2,9 +2,13 @@
 insets-secondary-bottom=0
 resize1='16x12 5:0 15:11'
 resize2='16x12 0:0 10:11'
-preset-resize-1=['<Primary><Alt>l']
+resize3='4x4 0:0 3:3'
+resize4='16x12 3:0 12:11'
 grid-sizes='16x12,8x6,6x4'
+preset-resize-1=['<Primary><Alt>l']
 preset-resize-2=['<Primary><Alt>h']
+preset-resize-3=['f']
+preset-resize-4=['c']
 max-timeout=2100
 auto-close=true
 window-margin=0
