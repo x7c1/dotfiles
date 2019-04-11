@@ -1,0 +1,21 @@
+[/]
+animation=false
+auto-close=true
+debug=false
+global-presets=false
+grid-sizes='16x12,8x6,6x4'
+max-timeout=2100
+preset-resize-1=['<Primary><Alt>l']
+preset-resize-2=['<Primary><Alt>h']
+preset-resize-3=['f']
+preset-resize-4=['c']
+preset-resize-5=['l']
+preset-resize-6=['h']
+resize1='16x12 5:0 15:11'
+resize2='16x12 0:0 10:11'
+resize3='4x4 0:0 3:3'
+resize4='16x12 5:0 10:11'
+resize5='16x12 11:0 15:11'
+resize6='16x12 0:0 4:11'
+show-icon=true
+show-toggle-tiling=['<Primary><Alt>o']
