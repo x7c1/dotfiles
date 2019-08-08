@@ -19,5 +19,6 @@ fi
 
 echo "suspending..."
 sleep 0.5
-echo mem > /sys/power/state
+
+exec sudo su -c "echo mem > /sys/power/state"
 
