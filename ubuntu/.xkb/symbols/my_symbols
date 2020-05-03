@@ -6,6 +6,7 @@ xkb_symbols "space_sides" {
   replace key <HENK> { [ Escape ] };
 };
 
+// rf. https://superuser.com/q/801611
 xkb_symbols "alt-keys" {
   key <LALT> {
     type[Group1] = "ONE_LEVEL",
