@@ -1,6 +1,6 @@
 *.swp
 .DS_Store
-.vim/.netrwhist
+.netrwhist
 
 .vim/bundle/*
 !.vim/bundle/neobundle.vim.git

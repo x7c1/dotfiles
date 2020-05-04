@@ -1,0 +1,21 @@
+xkb_keymap {
+  xkb_keycodes {
+    include "evdev+aliases(qwerty)"
+  };
+  xkb_types {
+    include "complete"
+  };
+  xkb_compat {
+    include "complete"
+    include "my_compat(redirect-keys)"
+  };
+  xkb_symbols {
+    include "pc+jp+us+inet(evdev)"
+    include "my_symbols(alt-keys)"
+    include "my_symbols(emacs-like)"
+    include "my_symbols(vim-like)"
+  };
+  xkb_geometry {
+    include "pc(pc105)"
+  };
+};

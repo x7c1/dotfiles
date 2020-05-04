@@ -2,16 +2,14 @@
 # http://blog.zoncoen.net/blog/2014/01/14/percol-autojump-with-zsh/
 function exists { which $1 &> /dev/null }
 
-if exists peco; then
-    function peco_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle reset-prompt
-    }
-    zle -N peco_select_history
-fi
+function peco_select_history() {
+    local tac
+    exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
+    BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle reset-prompt
+}
+zle -N peco_select_history
 
 # http://stillpedant.hatenablog.com/entry/percol-cd-history
 # cd 履歴を記録
@@ -34,9 +32,12 @@ function peco_get_destination_from_history() {
 # peco を使って cd 履歴の中からディレクトリを選択して
 # cd するウィジェット
 function peco_cd_history() {
-    local destination="$(peco_get_destination_from_history)"
-    [ -n $destination ] && cd ${destination/#\~/${HOME}}
-    zle reset-prompt
+    local destination="$(peco_get_destination_from_history | sed 's/ /\\ /g')"
+    if [[ $destination != "" ]]; then
+        BUFFER="cd ${destination}"
+        zle accept-line
+        zle reset-prompt
+    fi
 }
 zle -N peco_cd_history
 
@@ -44,12 +45,12 @@ zle -N peco_cd_history
 # 現在のカーソル位置に挿入するウィジェット
 function peco_insert_history() {
     local destination="$(peco_get_destination_from_history | sed 's/ /\\ /g')"
-    if [ $? -eq 0 ]; then
-        local new_left="${LBUFFER} ${destination} "
+    if [[ $destination != "" ]]; then
+        local new_left="${LBUFFER}${destination} "
         BUFFER=${new_left}${RBUFFER}
         CURSOR=${#new_left}
+        zle reset-prompt
     fi
-    zle reset-prompt
 }
 zle -N peco_insert_history
 
