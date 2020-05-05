@@ -5,3 +5,4 @@
 .vim/bundle/*
 !.vim/bundle/neobundle.vim.git
 
+*.tmp
