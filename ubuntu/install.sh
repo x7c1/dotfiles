@@ -122,6 +122,10 @@ setup_docker() {
   # above line creates following symlink:
   # /etc/systemd/system/multi-user.target.wants/docker.service
   # → /lib/systemd/system/docker.service.
+
+  sudo addgroup --system docker
+  sudo adduser $USER docker
+  echo "logout and login again."
 }
 
 main
