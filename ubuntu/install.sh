@@ -6,11 +6,13 @@ set -e
 
 ubuntu_root="$(pwd)"/ubuntu
 shared_dir="$(pwd)"/shared
+download_dir="$(pwd)"/download.tmp
 
 main() {
-  #sudo apt update
+  sudo apt update
   install_packages
 
+  setup
   setup_git_config
   setup_tmux
   setup_vim
@@ -22,6 +24,11 @@ install_packages() {
   sudo apt install -y \
     tig \
     tree
+}
+
+setup() {
+  [ -d "$download_dir" ] || \
+    mkdir "$download_dir"
 }
 
 setup_git_config() {
@@ -54,6 +61,7 @@ setup_vim() {
     > dein-installer.sh
 
   sh ./dein-installer.sh ~/.cache/dein
+  mv ./dein-installer.sh "$download_dir"
 }
 
 setup_zsh() {
@@ -92,6 +100,8 @@ setup_peco() {
     curl -L -O https://github.com/peco/peco/releases/download/v0.5.7/peco_linux_amd64.tar.gz
     tar -xvf peco_linux_amd64.tar.gz
     mv peco_linux_amd64/peco ~/bin/peco
+    mv peco_linux_amd64 "$download_dir"
+    mv peco_linux_amd64.tar.gz "$download_dir"
   fi
   # see shared/.peco.zshrc
   touch ~/.cd_history_file
