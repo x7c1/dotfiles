@@ -18,6 +18,7 @@ main() {
   setup_vim
   setup_zsh
   setup_peco
+  setup_docker
 }
 
 install_packages() {
@@ -111,6 +112,16 @@ setup_peco() {
 
   [ -e ~/.peco.zshrc ] || \
     ln -s "$shared_dir"/.peco.zshrc ~
+}
+
+setup_docker() {
+  sudo apt install -y docker.io
+  sudo systemctl start docker
+
+  sudo systemctl enable docker
+  # above line creates following symlink:
+  # /etc/systemd/system/multi-user.target.wants/docker.service
+  # → /lib/systemd/system/docker.service.
 }
 
 main
