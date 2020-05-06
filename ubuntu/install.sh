@@ -123,7 +123,7 @@ setup_peco() {
 }
 
 setup_docker() {
-  if [ -x $(command -v docker) ]; then
+  if command -v docker; then
     echo "docker already installed."
     return
   fi
