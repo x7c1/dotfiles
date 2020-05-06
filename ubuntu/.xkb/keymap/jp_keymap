@@ -18,7 +18,7 @@ xkb_keymap {
     include "ctrl(swapcaps)"
 
     include "my_symbols(jp_space_sides)"
-    include "my_symbols(alt_keys)"
+    include "my_symbols(jp_alt_keys)"
     include "my_symbols(emacs_like)"
   };
   xkb_geometry  {

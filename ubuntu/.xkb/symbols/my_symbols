@@ -15,6 +15,14 @@ xkb_symbols "alt_keys" {
   modifier_map Mod1 { <LALT> };
 };
 
+xkb_symbols "jp_alt_keys" {
+  key <MUHE> {
+    type[Group1] = "ONE_LEVEL",
+    symbols[Group1] = [ ISO_Level5_Shift ]
+  };
+  modifier_map Mod1 { <MUHE> };
+};
+
 xkb_symbols "emacs_like" {
 
   // F
