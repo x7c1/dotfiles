@@ -31,6 +31,9 @@ install_packages() {
 setup() {
   [ -d "$download_dir" ] || \
     mkdir "$download_dir"
+
+  [ -d ~/bin ] || \
+    mkdir ~/bin
 }
 
 setup_key_repeats() {
@@ -98,9 +101,6 @@ setup_zsh() {
 }
 
 setup_peco() {
-  [ -d ~/bin ] || \
-    mkdir ~/bin
-
   if [ -e ~/bin/peco ]; then
     echo "peco already installed."
     echo "delete ~/bin/peco before re-installing."
@@ -123,6 +123,10 @@ setup_peco() {
 }
 
 setup_docker() {
+  if [ -x $(command -v docker) ]; then
+    echo "docker already installed."
+    return
+  fi
   sudo apt install -y docker.io
   sudo systemctl start docker
 
