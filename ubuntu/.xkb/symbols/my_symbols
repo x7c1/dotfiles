@@ -1,13 +1,13 @@
 partial modifier_keys
 
-xkb_symbols "space_sides" {
+xkb_symbols "jp_space_sides" {
   replace key <LALT> { [ Super_L ] };
   replace key <MUHE> { [ Alt_L ] };
   replace key <HENK> { [ Escape ] };
 };
 
 // rf. https://superuser.com/q/801611
-xkb_symbols "alt-keys" {
+xkb_symbols "alt_keys" {
   key <LALT> {
     type[Group1] = "ONE_LEVEL",
     symbols[Group1] = [ ISO_Level5_Shift ]
@@ -15,7 +15,7 @@ xkb_symbols "alt-keys" {
   modifier_map Mod1 { <LALT> };
 };
 
-xkb_symbols "emacs-like" {
+xkb_symbols "emacs_like" {
 
   // F
   key <AC04> {
@@ -35,7 +35,7 @@ xkb_symbols "emacs-like" {
   };
 };
 
-xkb_symbols "vim-like" {
+xkb_symbols "vim_like" {
 
   // L
   key <AC09> {

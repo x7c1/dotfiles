@@ -11,10 +11,15 @@ xkb_keymap {
   };
   xkb_symbols {
     include "pc+jp+us:2+inet(evdev)"
+
+    // see:
+    // setxkbmap -option ctrl:nocaps -print
     include "ctrl(nocaps)"
-    include "my_symbols(space_sides)"
-    include "my_symbols(alt-keys)"
-    include "my_symbols(emacs-like)"
+    include "ctrl(swapcaps)"
+
+    include "my_symbols(jp_space_sides)"
+    include "my_symbols(alt_keys)"
+    include "my_symbols(emacs_like)"
   };
   xkb_geometry  {
     include "pc(pc105)"
