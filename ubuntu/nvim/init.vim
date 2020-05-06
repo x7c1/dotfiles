@@ -25,8 +25,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-let g:deoplete#enable_at_startup = 1
-
 filetype plugin indent on
 syntax enable
 set noswapfile
