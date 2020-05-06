@@ -23,6 +23,14 @@ xkb_symbols "jp_alt_keys" {
   modifier_map Mod1 { <MUHE> };
 };
 
+xkb_symbols "jp_henkan" {
+  // notes:
+  //  - Mozc recognize [Shift + Hiragana_Katakana] as [Katakana]
+  //  - Assign "Deactivate IME" through Mozc Settings > Keymap > Customize.
+  key <LCTL> { [ Katakana ] };
+  key <LWIN> { [ Katakana ] };
+};
+
 xkb_symbols "emacs_like" {
 
   // F
