@@ -4,10 +4,6 @@ set -x
 set -u
 set -e
 
-ubuntu_root="$(pwd)"/ubuntu
-shared_dir="$(pwd)"/shared
-download_dir="$(pwd)"/download.tmp
-
 main() {
   sudo apt update
   install_packages
@@ -21,6 +17,10 @@ main() {
   setup_peco
   setup_docker
 }
+
+ubuntu_root="$(pwd)"/ubuntu
+shared_dir="$(pwd)"/shared
+download_dir="$(pwd)"/download.tmp
 
 install_packages() {
   sudo apt install -y \
