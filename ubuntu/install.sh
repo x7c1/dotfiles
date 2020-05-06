@@ -25,6 +25,7 @@ download_dir="$(pwd)"/download.tmp
 
 install_packages() {
   sudo apt install -y \
+    build-essential \
     tig \
     tree
 }
