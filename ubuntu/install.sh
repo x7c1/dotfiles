@@ -13,6 +13,7 @@ main() {
   install_packages
 
   setup
+  setup_key_repeats
   setup_git_config
   setup_tmux
   setup_vim
@@ -30,6 +31,11 @@ install_packages() {
 setup() {
   [ -d "$download_dir" ] || \
     mkdir "$download_dir"
+}
+
+setup_key_repeats() {
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
+  gsettings set org.gnome.desktop.peripherals.keyboard delay 175
 }
 
 setup_git_config() {
