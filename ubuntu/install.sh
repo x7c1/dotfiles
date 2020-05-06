@@ -15,6 +15,7 @@ main() {
   setup_vim
   setup_zsh
   setup_peco
+  setup_rust
   setup_docker
 }
 
@@ -138,6 +139,15 @@ setup_docker() {
   sudo addgroup --system docker
   sudo adduser $USER docker
   echo "logout and login again."
+}
+
+setup_rust() {
+  if command -v rustc; then
+    echo "rust already installed."
+    return
+  fi
+  # https://www.rust-lang.org/tools/install
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 }
 
 main
