@@ -1,4 +1,4 @@
-xkb_compatibility "redirect-keys" {
+xkb_compatibility "redirect_keys" {
   interpret osfLeft {
     action = RedirectKey(keycode=<LEFT>, clearmodifiers=Mod1);
   };
