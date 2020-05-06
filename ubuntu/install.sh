@@ -68,8 +68,10 @@ setup_vim() {
 setup_zsh() {
   sudo apt install zsh
 
-  touch ~/.local.zshrc
-  echo 'export PATH=${HOME}/bin:$PATH' >> ~/.local.zshrc
+  if [ ! -e ~/.local.zshrc ]; then
+    touch ~/.local.zshrc
+    echo 'export PATH=${HOME}/bin:$PATH' >> ~/.local.zshrc
+  fi
 
   if [ -d ~/.oh-my-zsh ]; then
     echo "oh-my-zsh already installed."
