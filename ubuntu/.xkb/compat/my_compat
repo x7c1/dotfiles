@@ -1,12 +1,18 @@
 xkb_compatibility "redirect_keys" {
+  interpret osfBackSpace {
+    action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
+  };
+  interpret osfDown {
+    action = RedirectKey(keycode=<DOWN>, clearmodifiers=Mod1);
+  };
   interpret osfLeft {
     action = RedirectKey(keycode=<LEFT>, clearmodifiers=Mod1);
   };
   interpret osfRight {
     action = RedirectKey(keycode=<RGHT>, clearmodifiers=Mod1);
   };
-  interpret osfBackSpace {
-    action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
+  interpret osfUp {
+    action = RedirectKey(keycode=<UP>, clearmodifiers=Mod1);
   };
 };
 
