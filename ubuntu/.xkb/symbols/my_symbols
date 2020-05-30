@@ -52,6 +52,15 @@ xkb_symbols "emacs_like" {
     ]
   };
 
+  // E
+  key <AD03> {
+    type[Group1] = "EIGHT_LEVEL_ALPHABETIC",
+    symbols[Group1] = [
+      e, E, e, E,
+      osfEndLine, osfEndLine, osfEndLine, osfEndLine
+    ]
+  };
+
   // F
   key <AC04> {
     type[Group1] = "EIGHT_LEVEL_ALPHABETIC",

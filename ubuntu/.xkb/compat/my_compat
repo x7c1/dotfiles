@@ -10,6 +10,9 @@ xkb_compatibility "redirect_keys" {
   interpret osfDown {
     action = RedirectKey(keycode=<DOWN>, clearmodifiers=Mod1);
   };
+  interpret osfEndLine {
+    action = RedirectKey(keycode=<END>, clearmodifiers=Mod1);
+  };
   interpret osfLeft {
     action = RedirectKey(keycode=<LEFT>, clearmodifiers=Mod1);
   };
