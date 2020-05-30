@@ -12,7 +12,9 @@ dump:
 $ dconf dump /org/gnome/shell/extensions/gtile/ | sort > gtile.1920x1200.dconf
 ```
 
-# sleep settings
+<!--
+
+## sleep settings
 
 ```
 $ cat /sys/power/mem_sleep
@@ -26,3 +28,4 @@ $ cat /sys/power/mem_sleep
 s2idle [deep]
 ```
 
+-->
