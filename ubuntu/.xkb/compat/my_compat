@@ -4,6 +4,9 @@ xkb_compatibility "redirect_keys" {
   interpret osfBackSpace {
     action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
   };
+  interpret osfBeginLine {
+    action = RedirectKey(keycode=<HOME>, clearmodifiers=Mod1);
+  };
   interpret osfDelete {
     action = RedirectKey(keycode=<DELE>, clearmodifiers=Mod1);
   };

@@ -34,6 +34,15 @@ xkb_symbols "jp_henkan" {
 xkb_symbols "emacs_like" {
   // see: /usr/share/X11/xkb/symbols/latin
 
+  // A
+  key <AC01> {
+    type[Group1] = "EIGHT_LEVEL_ALPHABETIC",
+    symbols[Group1] = [
+      a, A, ae, AE,
+      osfBeginLine, osfBeginLine, osfBeginLine, osfBeginLine
+    ]
+  };
+
   // B
   key <AB05> {
     type[Group1] = "EIGHT_LEVEL_ALPHABETIC",
