@@ -1,6 +1,11 @@
 xkb_compatibility "redirect_keys" {
+  // see: /usr/share/X11/xkb/keycodes/evdev
+
   interpret osfBackSpace {
     action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
+  };
+  interpret osfDelete {
+    action = RedirectKey(keycode=<DELE>, clearmodifiers=Mod1);
   };
   interpret osfDown {
     action = RedirectKey(keycode=<DOWN>, clearmodifiers=Mod1);
