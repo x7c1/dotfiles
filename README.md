@@ -1,4 +1,4 @@
-# Haco's dotfiles
+# x7c1's dotfiles
 
 ## Install on Ubuntu
 
