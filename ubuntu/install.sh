@@ -8,7 +8,7 @@ main() {
   sudo apt update
   install_packages
 
-  setup
+  setup_dirs
   setup_key_repeats
   setup_git_config
   setup_tmux
@@ -31,7 +31,7 @@ install_packages() {
     tree
 }
 
-setup() {
+setup_dirs() {
   [ -d "$download_dir" ] || \
     mkdir "$download_dir"
 
