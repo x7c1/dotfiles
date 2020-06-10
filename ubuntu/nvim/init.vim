@@ -25,8 +25,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-let g:deoplete#enable_at_startup = 1
-
 filetype plugin indent on
 syntax enable
 set noswapfile
@@ -87,14 +85,31 @@ nnoremap [Denite] <nop>
 nmap  gu [Denite]
 nnoremap [Denite]b :Denite buffer<cr>
 nnoremap [Denite]d :Denite directory_rec<cr>
-nnoremap [Denite]f :DeniteBufferDir file_rec<cr>
-nnoremap [Denite]l :Denite line -auto_preview<cr>
-nnoremap [Denite]m :Denite file/old<cr>
+nnoremap [Denite]f :Denite file/rec<cr>
+nnoremap [Denite]l :Denite line -auto-action=preview<cr>
+nnoremap [Denite]m :Denite file/old -auto-action=preview<cr>
 
-call denite#custom#map('insert', "<C-l>", '<denite:do_action:tabopen>')
-call denite#custom#map('insert', "<C-j>", '<denite:do_action:split>')
-call denite#custom#map('insert', "<C-k>", '<denite:do_action:vsplit>')
-call denite#custom#map('insert', "<C-v>", '<denite:do_action:preview>')
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
+" Denite mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+
+  nnoremap <silent><buffer><expr> l
+  \ denite#do_map('do_action', 'tabopen')
+  nnoremap <silent><buffer><expr> v
+  \ denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> s
+  \ denite#do_map('do_action', 'split')
+endfunction
 

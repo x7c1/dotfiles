@@ -7,13 +7,12 @@ xkb_keymap {
   };
   xkb_compat {
     include "complete"
-    include "my_compat(redirect-keys)"
+    include "my_compat(redirect_keys)"
   };
   xkb_symbols {
     include "pc+jp+us+inet(evdev)"
-    include "my_symbols(alt-keys)"
-    include "my_symbols(emacs-like)"
-    include "my_symbols(vim-like)"
+    include "my_symbols(alt_keys)"
+    include "my_symbols(emacs_like)"
   };
   xkb_geometry {
     include "pc(pc105)"

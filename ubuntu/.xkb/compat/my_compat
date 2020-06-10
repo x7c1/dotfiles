@@ -1,12 +1,29 @@
-xkb_compatibility "redirect-keys" {
+xkb_compatibility "redirect_keys" {
+  // see: /usr/share/X11/xkb/keycodes/evdev
+
+  interpret osfBackSpace {
+    action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
+  };
+  interpret osfBeginLine {
+    action = RedirectKey(keycode=<HOME>, clearmodifiers=Mod1);
+  };
+  interpret osfDelete {
+    action = RedirectKey(keycode=<DELE>, clearmodifiers=Mod1);
+  };
+  interpret osfDown {
+    action = RedirectKey(keycode=<DOWN>, clearmodifiers=Mod1);
+  };
+  interpret osfEndLine {
+    action = RedirectKey(keycode=<END>, clearmodifiers=Mod1);
+  };
   interpret osfLeft {
     action = RedirectKey(keycode=<LEFT>, clearmodifiers=Mod1);
   };
   interpret osfRight {
     action = RedirectKey(keycode=<RGHT>, clearmodifiers=Mod1);
   };
-  interpret osfBackSpace {
-    action = RedirectKey(keycode=<BKSP>, clearmodifiers=Mod1);
+  interpret osfUp {
+    action = RedirectKey(keycode=<UP>, clearmodifiers=Mod1);
   };
 };
 

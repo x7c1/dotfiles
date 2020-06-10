@@ -1,0 +1,30 @@
+xkb_keymap {
+  xkb_keycodes {
+    include "evdev+aliases(qwerty)"
+  };
+  xkb_types {
+    include "complete"
+  };
+  xkb_compat {
+    include "complete"
+    include "my_compat(redirect_keys)"
+  };
+  xkb_symbols {
+    include "pc+jp+us:2+inet(evdev)"
+
+    // see:
+    // setxkbmap -option ctrl:nocaps -print
+    include "ctrl(nocaps)"
+
+    // it prevents mapping caps to another key.
+    // include "ctrl(swapcaps)"
+
+    include "my_symbols(jp_space_sides)"
+    include "my_symbols(jp_alt_keys)"
+    include "my_symbols(emacs_like)"
+    include "my_symbols(jp_henkan)"
+  };
+  xkb_geometry  {
+    include "pc(pc105)"
+  };
+};
