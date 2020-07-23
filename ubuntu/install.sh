@@ -16,6 +16,7 @@ main() {
   setup_zsh
   setup_peco
   setup_rust
+  setup_cargo_apps
   setup_xkb
   setup_docker
 }
@@ -132,6 +133,11 @@ setup_rust() {
   fi
   # https://www.rust-lang.org/tools/install
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+}
+
+setup_cargo_apps() {
+  # https://github.com/sharkdp/bat
+  cargo install --locked bat
 }
 
 setup_xkb() {
