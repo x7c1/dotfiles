@@ -18,9 +18,11 @@ main() {
   setup_rust
   setup_cargo_apps
   setup_xkb
+  setup_aws_cli
   setup_docker
 }
 
+dotfiles_root="$(pwd)"
 ubuntu_root="$(pwd)"/ubuntu
 shared_dir="$(pwd)"/shared
 download_dir="$(pwd)"/download.tmp
@@ -143,6 +145,23 @@ setup_cargo_apps() {
 setup_xkb() {
   [ -e ~/.xkb ] || \
     ln -s "$ubuntu_root"/.xkb ~
+}
+
+setup_aws_cli() {
+  if command -v aws; then
+    echo "aws already installed."
+    return
+  fi
+  cd $download_dir
+
+  # https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -O
+  unzip awscli-exe-linux-x86_64.zip
+
+  cd aws
+  sudo ./install
+
+  cd $dotfiles_root
 }
 
 setup_docker() {
