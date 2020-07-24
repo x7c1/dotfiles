@@ -82,8 +82,8 @@ setup_zsh() {
   sudo apt install -y zsh
 
   if [ ! -e ~/.local.zshrc ]; then
-    touch ~/.local.zshrc
-    echo 'export PATH=${HOME}/bin:$PATH' >> ~/.local.zshrc
+    cp "$ubuntu_root"/.local.zshrc.template ~/.local.zshrc
+    . ~/.local.zshrc
   fi
 
   if [ -d ~/.oh-my-zsh ]; then
@@ -161,6 +161,7 @@ setup_docker() {
   sudo addgroup --system docker
   sudo adduser $USER docker
   echo "logout and login again."
+  echo "type: gnome-session-quit"
 }
 
 main
