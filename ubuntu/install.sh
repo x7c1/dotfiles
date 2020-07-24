@@ -47,11 +47,11 @@ setup_key_repeats() {
 
 setup_git_config() {
   git config --global interactive.singlekey true
-  sudo apt install libterm-readkey-perl
+  sudo apt install -y libterm-readkey-perl
 }
 
 setup_tmux() {
-  sudo apt install tmux
+  sudo apt install -y tmux
 
   [ -e ~/.tmux.conf ] || \
     ln -s "$shared_dir"/.tmux.conf ~
@@ -79,7 +79,7 @@ setup_vim() {
 }
 
 setup_zsh() {
-  sudo apt install zsh
+  sudo apt install -y zsh
 
   if [ ! -e ~/.local.zshrc ]; then
     touch ~/.local.zshrc
