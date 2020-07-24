@@ -19,6 +19,7 @@ main() {
   setup_cargo_apps
   setup_xkb
   setup_aws_cli
+  setup_docker_compose
   setup_docker
 }
 
@@ -164,6 +165,18 @@ setup_aws_cli() {
   cd $dotfiles_root
 }
 
+setup_docker_compose() {
+  if command -v docker-compose; then
+    echo "docker-compose already installed."
+    return
+  fi
+  # https://github.com/docker/compose/releases
+  version="1.26.2"
+  url="https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)"
+  sudo curl -L $url -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+}
+
 setup_docker() {
   if command -v docker; then
     echo "docker already installed."
@@ -179,6 +192,7 @@ setup_docker() {
 
   sudo addgroup --system docker
   sudo adduser $USER docker
+
   echo "logout and login again."
   echo "type: gnome-session-quit"
 }
