@@ -19,6 +19,7 @@ main() {
   setup_cargo_apps
   setup_xkb
   setup_aws_cli
+  setup_terraform
   setup_docker_compose
   setup_docker
 }
@@ -162,6 +163,22 @@ setup_aws_cli() {
 
   cd aws
   sudo ./install
+
+  cd $dotfiles_root
+}
+
+setup_terraform() {
+  if command -v terraform; then
+    echo "terraform already installed."
+    return
+  fi
+  cd $download_dir
+
+  # https://www.terraform.io/downloads.html
+  version="0.12.29"
+  curl https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip -O
+  unzip terraform_${version}_linux_amd64.zip
+  mv terraform ~/bin
 
   cd $dotfiles_root
 }
