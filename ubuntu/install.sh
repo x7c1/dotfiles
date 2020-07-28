@@ -9,7 +9,7 @@ main() {
   install_packages
 
   setup_dirs
-  setup_key_repeats
+  setup_gnome_settings
   setup_git_config
   setup_tmux
   setup_vim
@@ -45,9 +45,17 @@ setup_dirs() {
     mkdir ~/bin
 }
 
-setup_key_repeats() {
+setup_gnome_settings() {
+
+  # change key repeat rate
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
   gsettings set org.gnome.desktop.peripherals.keyboard delay 175
+
+  # disable window snapping
+  # rf. https://askubuntu.com/a/1029186
+  gsettings set org.gnome.mutter edge-tiling false
+  gsettings set org.gnome.shell.overrides edge-tiling false
+
 }
 
 setup_git_config() {
