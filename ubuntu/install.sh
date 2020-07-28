@@ -20,6 +20,7 @@ main() {
   setup_xkb
   setup_aws_cli
   setup_terraform
+  setup_nvm
   setup_docker_compose
   setup_docker
 }
@@ -146,6 +147,8 @@ setup_rust() {
   fi
   # https://www.rust-lang.org/tools/install
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+  # see .local.zshrc.template about path settings
 }
 
 setup_cargo_apps() {
@@ -189,6 +192,22 @@ setup_terraform() {
   mv terraform ~/bin
 
   cd $dotfiles_root
+}
+
+setup_nvm() {
+  . $ubuntu_root/export_nvm.sh
+
+  if command -v nvm; then
+    echo "nvm already installed."
+    return
+  fi
+  # https://github.com/nvm-sh/nvm/releases
+  version="0.35.3"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$version/install.sh | bash
+
+  cat $ubuntu_root/export_nvm.sh >> ~/.local.zshrc
+  nvm install node
+  nvm use node
 }
 
 setup_docker_compose() {
