@@ -35,6 +35,7 @@ install_packages() {
     build-essential \
     postgresql-client \
     tig \
+    jq \
     tree
 }
 
