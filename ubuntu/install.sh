@@ -36,6 +36,7 @@ install_packages() {
     postgresql-client \
     tig \
     jq \
+    expect \
     tree
 }
 
