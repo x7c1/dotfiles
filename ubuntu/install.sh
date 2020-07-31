@@ -208,6 +208,8 @@ setup_nvm() {
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$version/install.sh | bash
 
   cat $ubuntu_root/export_nvm.sh >> ~/.local.zshrc
+  . $ubuntu_root/export_nvm.sh
+
   nvm install node
   nvm use node
 }
