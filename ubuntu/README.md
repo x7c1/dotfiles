@@ -30,6 +30,14 @@ dump:
 $ dconf dump /org/gnome/shell/extensions/gtile/ | sort > gtile.1920x1200.dconf
 ```
 
+## Tips
+
+Enable to restore xkb settings (if it's lost after suspend):
+
+```
+$ sudo ln -s $(pwd)/.xkb/restore_us_keymap.sh /lib/systemd/system-sleep
+```
+
 <!--
 
 ## sleep settings
