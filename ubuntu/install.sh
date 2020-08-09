@@ -37,6 +37,7 @@ install_packages() {
     tig \
     jq \
     expect \
+    pwgen \
     tree
 }
 
