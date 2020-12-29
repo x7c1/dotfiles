@@ -189,7 +189,7 @@ setup_terraform() {
   cd $download_dir
 
   # https://www.terraform.io/downloads.html
-  version="0.12.29"
+  version="0.13.3"
   curl https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip -O
   unzip terraform_${version}_linux_amd64.zip
   mv terraform ~/bin
