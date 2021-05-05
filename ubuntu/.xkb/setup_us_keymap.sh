@@ -18,7 +18,7 @@ version='0.0.6'
   echo "  DISPLAY: $DISPLAY"
 } >> "$log"
 
-sleep 3
+sleep 1
 
 xkbcomp \
   -I${HOME}/.xkb \
