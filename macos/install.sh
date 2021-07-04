@@ -4,6 +4,7 @@ set -xue
 
 main() {
   setup_dirs
+  setup_git_config
   setup_brew
   setup_zsh
   setup_peco
@@ -20,6 +21,10 @@ setup_dirs() {
 
   [ -d ~/bin ] || \
     mkdir ~/bin
+}
+
+setup_git_config() {
+  git config --global interactive.singlekey true
 }
 
 setup_brew() {
