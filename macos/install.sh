@@ -6,6 +6,7 @@ main() {
   setup_dirs
   setup_git_config
   setup_brew
+  setup_tmux
   setup_zsh
   setup_peco
   setup_rust
@@ -39,6 +40,13 @@ setup_brew() {
 
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
   eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
+setup_tmux() {
+  brew install tmux
+
+  [ -e ~/.tmux.conf ] || \
+    ln -s "$shared_dir"/.tmux.conf ~
 }
 
 setup_zsh() {
