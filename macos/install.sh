@@ -4,6 +4,7 @@ set -xue
 
 main() {
   setup_dirs
+  setup_key_repeats
   setup_git_config
   setup_brew
   setup_tmux
@@ -22,6 +23,11 @@ setup_dirs() {
 
   [ -d ~/bin ] || \
     mkdir ~/bin
+}
+
+setup_key_repeats() {
+  defaults write -g KeyRepeat -int 2
+  defaults write -g InitialKeyRepeat -int 12
 }
 
 setup_git_config() {
