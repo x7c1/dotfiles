@@ -9,17 +9,23 @@ main() {
   install_packages
 
   setup_dirs
-  setup_key_repeats
+  setup_gnome_settings
   setup_git_config
   setup_tmux
   setup_vim
   setup_zsh
   setup_peco
   setup_rust
+  setup_cargo_apps
   setup_xkb
+  setup_aws_cli
+  setup_terraform
+  setup_nvm
+  setup_docker_compose
   setup_docker
 }
 
+dotfiles_root="$(pwd)"
 ubuntu_root="$(pwd)"/ubuntu
 shared_dir="$(pwd)"/shared
 download_dir="$(pwd)"/download.tmp
@@ -27,7 +33,11 @@ download_dir="$(pwd)"/download.tmp
 install_packages() {
   sudo apt install -y \
     build-essential \
+    postgresql-client \
     tig \
+    jq \
+    expect \
+    pwgen \
     tree
 }
 
@@ -39,18 +49,26 @@ setup_dirs() {
     mkdir ~/bin
 }
 
-setup_key_repeats() {
+setup_gnome_settings() {
+
+  # change key repeat rate
   gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 30
   gsettings set org.gnome.desktop.peripherals.keyboard delay 175
+
+  # disable window snapping
+  # rf. https://askubuntu.com/a/1029186
+  gsettings set org.gnome.mutter edge-tiling false
+  gsettings set org.gnome.shell.overrides edge-tiling false
+
 }
 
 setup_git_config() {
   git config --global interactive.singlekey true
-  sudo apt install libterm-readkey-perl
+  sudo apt install -y libterm-readkey-perl
 }
 
 setup_tmux() {
-  sudo apt install tmux
+  sudo apt install -y tmux
 
   [ -e ~/.tmux.conf ] || \
     ln -s "$shared_dir"/.tmux.conf ~
@@ -78,11 +96,11 @@ setup_vim() {
 }
 
 setup_zsh() {
-  sudo apt install zsh
+  sudo apt install -y zsh
 
   if [ ! -e ~/.local.zshrc ]; then
-    touch ~/.local.zshrc
-    echo 'export PATH=${HOME}/bin:$PATH' >> ~/.local.zshrc
+    cp "$ubuntu_root"/.local.zshrc.template ~/.local.zshrc
+    . ~/.local.zshrc
   fi
 
   if [ -d ~/.oh-my-zsh ]; then
@@ -132,11 +150,81 @@ setup_rust() {
   fi
   # https://www.rust-lang.org/tools/install
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+  # see .local.zshrc.template about path settings
+}
+
+setup_cargo_apps() {
+  # https://github.com/sharkdp/bat
+  cargo install --locked bat
 }
 
 setup_xkb() {
   [ -e ~/.xkb ] || \
     ln -s "$ubuntu_root"/.xkb ~
+}
+
+setup_aws_cli() {
+  if command -v aws; then
+    echo "aws already installed."
+    return
+  fi
+  cd $download_dir
+
+  # https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -O
+  unzip awscli-exe-linux-x86_64.zip
+
+  cd aws
+  sudo ./install
+
+  cd $dotfiles_root
+}
+
+setup_terraform() {
+  if command -v terraform; then
+    echo "terraform already installed."
+    return
+  fi
+  cd $download_dir
+
+  # https://www.terraform.io/downloads.html
+  version="0.15.1"
+  curl https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip -O
+  unzip terraform_${version}_linux_amd64.zip
+  mv terraform ~/bin
+
+  cd $dotfiles_root
+}
+
+setup_nvm() {
+  . $ubuntu_root/export_nvm.sh
+
+  if command -v nvm; then
+    echo "nvm already installed."
+    return
+  fi
+  # https://github.com/nvm-sh/nvm/releases
+  version="0.35.3"
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$version/install.sh | bash
+
+  cat $ubuntu_root/export_nvm.sh >> ~/.local.zshrc
+  . $ubuntu_root/export_nvm.sh
+
+  nvm install node
+  nvm use node
+}
+
+setup_docker_compose() {
+  if command -v docker-compose; then
+    echo "docker-compose already installed."
+    return
+  fi
+  # https://github.com/docker/compose/releases
+  version="1.26.2"
+  url="https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)"
+  sudo curl -L $url -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
 }
 
 setup_docker() {
@@ -154,7 +242,9 @@ setup_docker() {
 
   sudo addgroup --system docker
   sudo adduser $USER docker
+
   echo "logout and login again."
+  echo "type: gnome-session-quit"
 }
 
 main

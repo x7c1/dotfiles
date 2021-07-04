@@ -32,8 +32,13 @@ setopt HIST_IGNORE_ALL_DUPS
 # http://d.hatena.ne.jp/voidy21/20090902/1251918174
 function cd(){
   builtin cd $@ && \
-    ls -Alt --reverse --color --time-style="+%Y-%m-%d %H:%M:%S" |\
-      awk '{c="";for(i=6;i<=NF;i++) c=c $i " "; print c}' |\
+    ls -hAlt --reverse --color --time-style="+%Y-%m-%d %H:%M:%S" |\
+      awk '{
+        printf "%s %s %4s %s\n",
+        $6, $7, # modified date & time
+        $5,     # file size
+        $8      # file name
+      }' |\
       sed '/^ *$/d' |\
       cat -n |\
       tail -10
