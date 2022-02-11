@@ -34,6 +34,7 @@ install_packages() {
   sudo apt install -y \
     build-essential \
     postgresql-client \
+    libpq-dev \
     tig \
     jq \
     expect \

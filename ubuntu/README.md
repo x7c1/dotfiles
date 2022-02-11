@@ -2,7 +2,7 @@
 
 for new machine:
 
-```
+```sh
 $ sudo apt install xclip
 
 $ cd ~/.ssh
@@ -20,13 +20,13 @@ $ git clone git@github.com:x7c1/dotfiles.git
 
 load:
 
-```
+```sh
 $ dconf load /org/gnome/shell/extensions/gtile/ < gtile.1920x1200.dconf
 ```
 
 dump:
 
-```
+```sh
 $ dconf dump /org/gnome/shell/extensions/gtile/ | sort > gtile.1920x1200.dconf
 ```
 
@@ -34,8 +34,24 @@ $ dconf dump /org/gnome/shell/extensions/gtile/ | sort > gtile.1920x1200.dconf
 
 Enable to restore xkb settings (if it's lost after suspend):
 
-```
+```sh
 $ sudo ln -s $(pwd)/.xkb/restore_us_keymap.sh /lib/systemd/system-sleep
+```
+
+Change the timeout before suspending:
+
+```sh
+# 6 [hour]
+$ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $((60*60*6))
+
+$ dconf dump / | grep -i "suspend\|sleep" -C2
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='suspend'
+sleep-inactive-ac-timeout=21600
+sleep-inactive-ac-type='suspend'
+
+[org/gnome/settings-daemon/plugins/xsettings]
 ```
 
 <!--
