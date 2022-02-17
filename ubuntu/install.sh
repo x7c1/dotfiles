@@ -35,6 +35,7 @@ install_packages() {
     build-essential \
     postgresql-client \
     libpq-dev \
+    libssl-dev \
     tig \
     jq \
     expect \
@@ -223,7 +224,7 @@ setup_docker_compose() {
   fi
   # https://github.com/docker/compose/releases
   version="2.2.3"
-  url="https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)"
+  url="https://github.com/docker/compose/releases/download/v$version/docker-compose-$(uname -s)-$(uname -m)"
   sudo curl -L $url -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
 }
