@@ -35,6 +35,7 @@ install_packages() {
     build-essential \
     postgresql-client \
     libpq-dev \
+    libssl-dev \
     tig \
     jq \
     expect \
@@ -128,7 +129,7 @@ setup_peco() {
     echo "delete ~/bin/peco before re-installing."
   else
     # see latest version at https://github.com/peco/peco/releases
-    curl -L -O https://github.com/peco/peco/releases/download/v0.5.7/peco_linux_amd64.tar.gz
+    curl -L -O https://github.com/peco/peco/releases/download/v0.5.10/peco_linux_amd64.tar.gz
     tar -xvf peco_linux_amd64.tar.gz
     mv peco_linux_amd64/peco ~/bin/peco
     mv peco_linux_amd64 "$download_dir"
@@ -190,7 +191,7 @@ setup_terraform() {
   cd $download_dir
 
   # https://www.terraform.io/downloads.html
-  version="0.15.1"
+  version="1.1.5"
   curl https://releases.hashicorp.com/terraform/${version}/terraform_${version}_linux_amd64.zip -O
   unzip terraform_${version}_linux_amd64.zip
   mv terraform ~/bin
@@ -206,7 +207,7 @@ setup_nvm() {
     return
   fi
   # https://github.com/nvm-sh/nvm/releases
-  version="0.35.3"
+  version="0.39.1"
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$version/install.sh | bash
 
   cat $ubuntu_root/export_nvm.sh >> ~/.local.zshrc
@@ -222,8 +223,8 @@ setup_docker_compose() {
     return
   fi
   # https://github.com/docker/compose/releases
-  version="1.26.2"
-  url="https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)"
+  version="2.2.3"
+  url="https://github.com/docker/compose/releases/download/v$version/docker-compose-$(uname -s)-$(uname -m)"
   sudo curl -L $url -o /usr/local/bin/docker-compose
   sudo chmod +x /usr/local/bin/docker-compose
 }
