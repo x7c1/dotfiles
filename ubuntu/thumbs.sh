@@ -20,7 +20,6 @@ feh -L '%w %h %f' $files \
     --thumb-width $(($width - 5)) \
     --thumb-height $(($height - 5)) \
     --limit-height $(($height)) \
-    --no-menus \
     --full-screen \
     --randomize \
     --filelist -
