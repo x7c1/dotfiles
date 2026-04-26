@@ -1,10 +1,19 @@
 # x7c1's dotfiles
 
-## Install on Ubuntu
+## Layout
 
-```
-$ ./ubuntu/install.sh
-```
+- `home-manager/` — flake and home-manager modules
+- `config/` — tool-agnostic config files referenced from the modules
+- `ubuntu/` — Ubuntu-specific scripts and setup notes
+- `macos/` / `macos.legacy/` — macOS-specific (work in progress)
 
-see also: [ubuntu/README.md](ubuntu/README.md)
+## Setup
 
+See the per-host guide:
+
+- [Ubuntu](./ubuntu/README.md)
+- macOS — TODO
+
+## Updates
+
+See [UPDATES.md](./UPDATES.md).

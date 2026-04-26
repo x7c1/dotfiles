@@ -1,73 +1,73 @@
-## Initial setup
+# Ubuntu setup
 
-for new machine:
+Tested on Ubuntu 26.04 (Wayland session).
+
+## Bootstrap
+
+1. **Install curl** (needed by the Nix installer):
+
+   ```sh
+   sudo apt update && sudo apt install -y curl
+   ```
+
+2. **Install Nix** ([Determinate Systems installer](https://github.com/DeterminateSystems/nix-installer)):
+
+   ```sh
+   curl -fsSL https://install.determinate.systems/nix | sh -s -- install
+   ```
+
+   Re-open the shell to pick up Nix paths.
+
+3. **Set up an SSH key** for GitHub:
+
+   ```sh
+   ssh-keygen -t ed25519
+   nix run nixpkgs#wl-clipboard -- wl-copy < ~/.ssh/id_ed25519.pub
+   # Paste into https://github.com/settings/keys
+   ```
+
+4. **Clone the dotfiles** (anywhere you like):
+
+   ```sh
+   nix run nixpkgs#git -- clone git@github.com:x7c1/dotfiles.git /path/to/dotfiles
+   ```
+
+5. **Link the home-manager directory**:
+
+   ```sh
+   ln -s /path/to/dotfiles/home-manager ~/.config/home-manager
+   ```
+
+6. **Apply the configuration**:
+
+   ```sh
+   nix run home-manager/master -- switch --flake ~/.config/home-manager#x7c1@ubuntu
+   ```
+
+7. **Switch login shell to zsh**:
+
+   ```sh
+   echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
+   chsh -s "$HOME/.nix-profile/bin/zsh"
+   ```
+
+   Log out and back in for `$SHELL` to update.
+
+## Optional steps
+
+### Docker (system-level, not Nix-managed)
 
 ```sh
-$ sudo apt install xclip
-
-$ cd ~/.ssh
-$ ssh-keygen -t rsa
-$ cat ~/.ssh/id_rsa.pub | xclip -selection c
-
-# Register the copied SSH key to github.
-# https://github.com/settings/keys
-
-$ sudo apt install git -y
-$ git clone git@github.com:x7c1/dotfiles.git
+/path/to/dotfiles/ubuntu/scripts/install-docker.sh
 ```
 
-## gTile settings
+Log out and back in (or `newgrp docker`) for the docker group to take effect.
 
-load:
+### First-time toolchain setup
+
+Some Nix packages provide a manager binary that needs an explicit toolchain install on first use:
 
 ```sh
-$ dconf load /org/gnome/shell/extensions/gtile/ < gtile.1920x1200.dconf
+fnm install --lts && fnm default lts/iron   # Node.js
+rustup default stable                       # Rust
 ```
-
-dump:
-
-```sh
-$ dconf dump /org/gnome/shell/extensions/gtile/ | sort > gtile.1920x1200.dconf
-```
-
-## Tips
-
-Enable to restore xkb settings (if it's lost after suspend):
-
-```sh
-$ sudo ln -s $(pwd)/.xkb/restore_us_keymap.sh /lib/systemd/system-sleep
-```
-
-Change the timeout before suspending:
-
-```sh
-# 6 [hour]
-$ gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-timeout $((60*60*6))
-
-$ dconf dump / | grep -i "suspend\|sleep" -C2
-
-[org/gnome/settings-daemon/plugins/power]
-power-button-action='suspend'
-sleep-inactive-ac-timeout=21600
-sleep-inactive-ac-type='suspend'
-
-[org/gnome/settings-daemon/plugins/xsettings]
-```
-
-<!--
-
-## sleep settings
-
-```
-$ cat /sys/power/mem_sleep
-[s2idle] deep
-
-$ sudo su
-root@...:/.../dotfiles# echo deep > /sys/power/mem_sleep
-root@...:/.../dotfiles# exit
-
-$ cat /sys/power/mem_sleep
-s2idle [deep]
-```
-
--->
