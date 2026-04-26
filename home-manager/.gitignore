@@ -1,0 +1,9 @@
+# Editor
+.direnv/
+.envrc.local
+*.swp
+.DS_Store
+
+# Nix build outputs
+result
+result-*
