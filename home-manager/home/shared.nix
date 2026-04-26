@@ -14,6 +14,8 @@
 
   programs.lazygit.enable = true;
 
+  programs.gh.enable = true;
+
   home.shellAliases = {
     lg = "lazygit log";
   };
