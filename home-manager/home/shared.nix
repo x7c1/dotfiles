@@ -64,6 +64,7 @@
     extraPackages = with pkgs; [
       tree-sitter
       gcc
+      nodejs
     ];
   };
 
