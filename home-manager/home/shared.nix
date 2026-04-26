@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -76,6 +76,15 @@
     "nvim/init.lua".source = ../../config/nvim/init.lua;
     "nvim/after/plugin/local.lua".source = ../../config/nvim/after/plugin/local.lua;
     "nvim/lua/custom/plugins/completion.lua".source = ../../config/nvim/lua/custom/plugins/completion.lua;
+
+    # Symlink lazy-lock.json directly back to the repo so :Lazy update
+    # writes through to the file under git, instead of stranding plugin
+    # versions on a single machine. The path goes via ~/.config/home-manager
+    # (which is itself a symlink to the dotfiles checkout) so the actual
+    # repo location can vary per machine.
+    "nvim/lazy-lock.json".source =
+      config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/.config/home-manager/../config/nvim/lazy-lock.json";
   };
 
   programs.tmux = {
