@@ -70,6 +70,7 @@
   xdg.configFile = {
     "nvim/init.lua".source = ../../config/nvim/init.lua;
     "nvim/after/plugin/local.lua".source = ../../config/nvim/after/plugin/local.lua;
+    "nvim/lua/custom/plugins/completion.lua".source = ../../config/nvim/lua/custom/plugins/completion.lua;
   };
 
   programs.tmux = {
