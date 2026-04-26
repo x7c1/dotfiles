@@ -1,3 +1,6 @@
+# Disable terminal flow control so ^s/^q are usable as keybinds.
+stty -ixon
+
 # Prefix-matching history search on ^p/^n
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -22,7 +25,7 @@ bindkey '^g^j' fzf-zoxide-cd
 # ^g^p: pick process and insert PID
 fzf-process-pid() {
   local pids
-  pids=$(ps -ef | sed 1d | fzf -m | awk '{print $2}' | paste -sd ' ' -)
+  pids=$(ps -ef | sed 1d | fzf -m --exit-0 | awk '{print $2}' | paste -sd ' ' -)
   [[ -n "$pids" ]] && LBUFFER+="$pids "
   zle reset-prompt
 }
@@ -32,7 +35,7 @@ bindkey '^g^p' fzf-process-pid
 # ^g^s: pick changed files from git status
 fzf-git-status() {
   local files
-  files=$(git status -s | fzf -m | awk '{print $2}' | paste -sd ' ' -)
+  files=$(git status -s 2>/dev/null | fzf -m --exit-0 | awk '{print $2}' | paste -sd ' ' -)
   [[ -n "$files" ]] && LBUFFER+="$files "
   zle reset-prompt
 }
