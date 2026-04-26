@@ -50,6 +50,25 @@
     enableZshIntegration = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    prefix = "C-t";
+    keyMode = "vi";
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      yank
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor 'mocha'
+          set -g @catppuccin_window_status_style 'rounded'
+          set -g @catppuccin_date_time_text '%Y-%m-%d %a %H:%M'
+        '';
+      }
+    ];
+    extraConfig = builtins.readFile ../../config/tmux/tmux.conf;
+  };
+
   home.shellAliases = {
     lg = "lazygit log";
   };
