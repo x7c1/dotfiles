@@ -64,6 +64,12 @@
     nix-direnv.enable = true;
   };
 
+  programs.eza = {
+    enable = true;
+    enableZshIntegration = true;
+    git = true;
+  };
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -116,15 +122,16 @@
     lg = "lazygit log";
     gst = "git status";
     gd = "git diff";
-    la = "ls -lAh";
   };
 
   home.packages = with pkgs; [
     ripgrep
     fd
     jq
+    yq-go
     bat
     tree
+    dust
     pwgen
     awscli2
     opentofu
