@@ -10,9 +10,12 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      name = "x7c1";
-      email = "994424+x7c1@users.noreply.github.com";
+    settings = {
+      user = {
+        name = "x7c1";
+        email = "994424+x7c1@users.noreply.github.com";
+      };
+      interactive.singlekey = true;
     };
   };
 
@@ -38,6 +41,7 @@
       ../../config/zsh/terminal.zsh
       ../../config/zsh/history.zsh
       ../../config/zsh/fzf.zsh
+      ../../config/zsh/fnm.zsh
       ../../config/zsh/tmux-title.zsh
     ]);
   };
@@ -101,6 +105,13 @@
     ripgrep
     fd
     jq
+    bat
+    tree
+    pwgen
+    awscli2
+    opentofu
+    rustup
+    fnm
   ];
 }
 
