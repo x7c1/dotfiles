@@ -5,7 +5,6 @@
   programs.home-manager.enable = true;
 
   home.sessionVariables = {
-    EDITOR = "vim";
     LANG = "en_US.UTF-8";
   };
 
@@ -53,6 +52,24 @@
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    vimAlias = true;
+    viAlias = true;
+    withRuby = false;
+    withPython3 = false;
+    extraPackages = with pkgs; [
+      tree-sitter
+      gcc
+    ];
+  };
+
+  xdg.configFile = {
+    "nvim/init.lua".source = ../../config/nvim/init.lua;
+    "nvim/after/plugin/local.lua".source = ../../config/nvim/after/plugin/local.lua;
   };
 
   programs.tmux = {
