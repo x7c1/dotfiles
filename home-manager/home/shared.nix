@@ -107,11 +107,11 @@
       sensible
       yank
       {
-        plugin = catppuccin;
+        plugin = power-theme;
         extraConfig = ''
-          set -g @catppuccin_flavor 'mocha'
-          set -g @catppuccin_window_status_style 'rounded'
-          set -g @catppuccin_date_time_text '%Y-%m-%d %a %H:%M'
+          set -g @tmux_power_theme 'sky'
+          set -g @tmux_power_date_format '%Y-%m-%d %a'
+          set -g @tmux_power_time_format '%H:%M'
         '';
       }
     ];
