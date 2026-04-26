@@ -35,7 +35,12 @@
       ignoreAllDups = true;
     };
 
-    initContent = builtins.readFile ../../config/zsh/init.zsh;
+    initContent = builtins.concatStringsSep "\n" (map builtins.readFile [
+      ../../config/zsh/terminal.zsh
+      ../../config/zsh/history.zsh
+      ../../config/zsh/fzf.zsh
+      ../../config/zsh/tmux-title.zsh
+    ]);
   };
 
   programs.starship.enable = true;
