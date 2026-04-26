@@ -14,6 +14,6 @@ See the per-host guide:
 - [Ubuntu](./ubuntu/README.md)
 - macOS — TODO
 
-## Updating Neovim plugins
+## Updates
 
-`config/nvim/lazy-lock.json` is symlinked into `~/.config/nvim/`, so running `:Lazy update` (or `:Lazy sync`) inside Neovim writes the new plugin versions straight back to the repository file. Verify with `git status`, then commit `config/nvim/lazy-lock.json`.
+See [UPDATES.md](./UPDATES.md).
