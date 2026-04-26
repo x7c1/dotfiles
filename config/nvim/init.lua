@@ -658,6 +658,8 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         -- You can add other tools here that you want Mason to install
+        'ts_ls',         -- TypeScript / JavaScript
+        'rust_analyzer', -- Rust
       })
 
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -786,7 +788,7 @@ require('lazy').setup({
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets' },
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
       },
 
       snippets = { preset = 'luasnip' },
