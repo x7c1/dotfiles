@@ -114,6 +114,9 @@
 
   home.shellAliases = {
     lg = "lazygit log";
+    gst = "git status";
+    gd = "git diff";
+    la = "ls -lAh";
   };
 
   home.packages = with pkgs; [
