@@ -22,6 +22,7 @@
       };
       interactive.singlekey = true;
     };
+    includes = [{ path = "~/.config/git/config.local"; }];
   };
 
   programs.lazygit.enable = true;
