@@ -8,6 +8,11 @@
     LANG = "en_US.UTF-8";
   };
 
+  home.sessionPath = [
+    "$HOME/bin"
+    "$HOME/.local/bin"
+  ];
+
   programs.git = {
     enable = true;
     settings = {
@@ -43,6 +48,7 @@
       ../../config/zsh/fzf.zsh
       ../../config/zsh/fnm.zsh
       ../../config/zsh/tmux-title.zsh
+      ../../config/zsh/local.zsh
     ]);
   };
 
