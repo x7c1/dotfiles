@@ -63,6 +63,15 @@ Tested on Ubuntu 26.04 (Wayland session).
 
 Log out and back in (or `newgrp docker`) for the docker group to take effect.
 
+### Visual Studio Code (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-vscode.sh
+```
+
+Updates flow through apt; run `sudo apt upgrade` (or enable unattended
+upgrades for `packages.microsoft.com`) to keep `code` current.
+
 ### First-time toolchain setup
 
 Some Nix packages provide a manager binary that needs an explicit toolchain install on first use:
