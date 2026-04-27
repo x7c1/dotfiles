@@ -139,7 +139,6 @@
     bat
     tree
     dust
-    pwgen
     awscli2
     opentofu
     rustup
