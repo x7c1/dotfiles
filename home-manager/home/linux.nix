@@ -12,7 +12,7 @@
     "org/gnome/mutter".edge-tiling = false;
     "org/gnome/shell/overrides".edge-tiling = false;
     "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-timeout =
-      lib.hm.gvariant.mkUint32 21600;
+      lib.hm.gvariant.mkUint32 (6 * 60 * 60);
     "org/gnome/desktop/screensaver".lock-delay =
       lib.hm.gvariant.mkUint32 (4 * 60 * 60);
   };
