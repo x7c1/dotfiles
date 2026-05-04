@@ -13,5 +13,7 @@
     "org/gnome/shell/overrides".edge-tiling = false;
     "org/gnome/settings-daemon/plugins/power".sleep-inactive-ac-timeout =
       lib.hm.gvariant.mkUint32 21600;
+    "org/gnome/desktop/screensaver".lock-delay =
+      lib.hm.gvariant.mkUint32 (4 * 60 * 60);
   };
 }
