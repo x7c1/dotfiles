@@ -29,7 +29,7 @@ Tested on macOS 26 (aarch64-darwin).
 4. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
 
    ```sh
-   /path/to/dotfiles/macos/scripts/setup-home-manager.sh
+   /path/to/dotfiles/scripts/setup-home-manager.sh
    ```
 
 ## Optional steps

@@ -32,19 +32,13 @@ Tested on Ubuntu 26.04 (Wayland session).
    nix run nixpkgs#git -- clone git@github.com:x7c1/dotfiles.git /path/to/dotfiles
    ```
 
-5. **Link the home-manager directory**:
+5. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
 
    ```sh
-   ln -s /path/to/dotfiles/home-manager ~/.config/home-manager
+   /path/to/dotfiles/scripts/setup-home-manager.sh
    ```
 
-6. **Apply the configuration**:
-
-   ```sh
-   nix run home-manager/master -- switch --flake ~/.config/home-manager#x7c1@ubuntu
-   ```
-
-7. **Switch login shell to zsh**:
+6. **Switch login shell to zsh**:
 
    ```sh
    echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells

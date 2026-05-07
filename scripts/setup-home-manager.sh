@@ -2,7 +2,13 @@
 set -euo pipefail
 
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-dotfiles_dir="$(cd "$script_dir/../.." && pwd)"
+dotfiles_dir="$(cd "$script_dir/.." && pwd)"
+
+case "$(uname -s)" in
+  Darwin) host="x7c1@macos" ;;
+  Linux)  host="x7c1@ubuntu" ;;
+  *) echo "Error: unsupported OS: $(uname -s)" >&2; exit 1 ;;
+esac
 
 target="$HOME/.config/home-manager"
 source_dir="$dotfiles_dir/home-manager"
@@ -18,4 +24,4 @@ else
   echo "Linked: $target -> $source_dir"
 fi
 
-nix run home-manager/master -- switch --flake "$target#x7c1@macos"
+nix run home-manager/master -- switch --flake "$target#$host"
