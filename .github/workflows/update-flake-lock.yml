@@ -2,7 +2,7 @@ name: Update flake.lock
 
 on:
   schedule:
-    # 00:00 UTC on the 1st and 15th of every month (≈ bi-weekly, 09:00 JST)
+    # 00:00 UTC on the 1st and 15th of every month (≈ bi-weekly)
     - cron: "0 0 1,15 * *"
   workflow_dispatch:
 
