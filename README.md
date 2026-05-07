@@ -33,4 +33,6 @@ For cases that fall outside that flow (bumping ahead of schedule, bumping a sing
 - [Neovim plugins](./docs/update-nvim-plugins.md) — `./scripts/update-nvim-plugins.sh`
 - Rust toolchain — `rustup update`
 - Node.js — `fnm install --lts`
-- System packages — `sudo apt upgrade` (Ubuntu) / `softwareupdate -ia && brew upgrade` (macOS)
+- System packages
+  - Ubuntu — `sudo apt upgrade`
+  - macOS — `softwareupdate -ia && brew upgrade`
