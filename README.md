@@ -5,14 +5,14 @@
 - `home-manager/` — flake and home-manager modules
 - `config/` — tool-agnostic config files referenced from the modules
 - `ubuntu/` — Ubuntu-specific scripts and setup notes
-- `macos/` / `macos.legacy/` — macOS-specific (work in progress)
+- `macos/` — macOS-specific scripts and setup notes
 
 ## Setup
 
 See the per-host guide:
 
 - [Ubuntu](./ubuntu/README.md)
-- macOS — TODO
+- [macOS](./macos/README.md)
 
 ## Updates
 
