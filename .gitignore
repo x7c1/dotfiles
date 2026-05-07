@@ -9,3 +9,6 @@
 
 # IntelliJ
 .idea
+
+# host-local Brewfile (per-machine cask/formula not shared across hosts)
+macos/Brewfile.local
