@@ -9,8 +9,9 @@
 
   targets.darwin.defaults = {
     NSGlobalDomain = {
-      KeyRepeat = 2;
-      InitialKeyRepeat = 12;
+      # Unit: 1/60 sec ticks (~16.67ms), not ms.
+      KeyRepeat = 2;          # ~33ms (GUI minimum)
+      InitialKeyRepeat = 12;  # ~200ms (below GUI's 15-step / 250ms floor)
     };
   };
 
