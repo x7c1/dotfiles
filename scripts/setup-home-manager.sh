@@ -24,4 +24,8 @@ else
   echo "Linked: $target -> $source_dir"
 fi
 
-nix run home-manager/master -- switch --flake "$target#$host"
+if command -v home-manager >/dev/null 2>&1; then
+  home-manager switch --flake "$target#$host"
+else
+  nix run home-manager/master -- switch --flake "$target#$host"
+fi
