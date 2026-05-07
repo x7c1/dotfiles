@@ -16,7 +16,7 @@ See the per-host guide:
 
 After bootstrap, run the [first-time toolchain setup](./docs/toolchain-setup.md).
 
-## Sync
+## Routine sync
 
 For routine use, just run:
 
@@ -26,10 +26,11 @@ For routine use, just run:
 
 Pulls the latest commits and applies them via `home-manager switch`. If a pending flake bump PR (auto-opened by the [`update-flake-lock` workflow](./.github/workflows/update-flake-lock.yml)) is found, it is verified, merged, and applied as part of the same run. Idempotent — safe to run anytime.
 
-## Updates
+For cases that fall outside that flow (bumping ahead of schedule, bumping a single input, rolling back), see [Updating Nix flake inputs](./docs/update-flake-inputs.md).
+
+## Manual updates
 
 - [Neovim plugins](./docs/update-nvim-plugins.md) — `./scripts/update-nvim-plugins.sh`
-- [Nix-managed packages](./docs/update-flake-inputs.md) — `./scripts/sync.sh`
 - Rust toolchain — `rustup update`
-- Node.js — `fnm`
-- System packages — `sudo apt upgrade`
+- Node.js — `fnm install --lts`
+- System packages — `sudo apt upgrade` (Ubuntu) / `softwareupdate -ia && brew upgrade` (macOS)
