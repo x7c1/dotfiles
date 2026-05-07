@@ -56,11 +56,3 @@ cask "alt-tab"
 cask "alexstrnik/browserino/browserino"
 ```
 
-### First-time toolchain setup
-
-Some Nix packages provide a manager binary that needs an explicit toolchain install on first use:
-
-```sh
-fnm install --lts          # Node.js
-rustup default stable      # Rust
-```

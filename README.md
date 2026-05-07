@@ -14,6 +14,8 @@ See the per-host guide:
 - [Ubuntu](./ubuntu/README.md)
 - [macOS](./macos/README.md)
 
+After bootstrap, run the [first-time toolchain setup](./docs/toolchain-setup.md).
+
 ## Updates
 
 See [UPDATES.md](./UPDATES.md).

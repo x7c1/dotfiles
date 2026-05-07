@@ -72,11 +72,3 @@ Log out and back in (or `newgrp docker`) for the docker group to take effect.
 Updates flow through apt; run `sudo apt upgrade` (or enable unattended
 upgrades for `packages.microsoft.com`) to keep `code` current.
 
-### First-time toolchain setup
-
-Some Nix packages provide a manager binary that needs an explicit toolchain install on first use:
-
-```sh
-fnm install --lts && fnm default lts/iron   # Node.js
-rustup default stable                       # Rust
-```
