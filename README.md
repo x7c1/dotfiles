@@ -24,7 +24,7 @@ For routine use, just run:
 ./scripts/sync.sh
 ```
 
-This pulls the latest commits and applies them via `home-manager switch`. Idempotent — safe to run anytime.
+Pulls the latest commits and applies them via `home-manager switch`. If a pending flake bump PR (auto-opened by the [`update-flake-lock` workflow](./.github/workflows/update-flake-lock.yml)) is found, it is verified, merged, and applied as part of the same run. Idempotent — safe to run anytime.
 
 ## Updates
 
