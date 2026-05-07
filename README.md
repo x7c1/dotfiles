@@ -29,7 +29,7 @@ Pulls the latest commits and applies them via `home-manager switch`. If a pendin
 ## Updates
 
 - [Neovim plugins](./docs/update-nvim-plugins.md) — `./scripts/update-nvim-plugins.sh`
-- [Nix-managed packages](./docs/update-flake-inputs.md) — `./scripts/sync.sh` (manual flows in the doc)
+- [Nix-managed packages](./docs/update-flake-inputs.md) — `./scripts/sync.sh`
 - Rust toolchain — `rustup update`
 - Node.js — `fnm`
 - System packages — `sudo apt upgrade`
