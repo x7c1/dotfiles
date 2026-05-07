@@ -16,6 +16,16 @@ See the per-host guide:
 
 After bootstrap, run the [first-time toolchain setup](./docs/toolchain-setup.md).
 
+## Sync
+
+For routine use, just run:
+
+```sh
+./scripts/sync.sh
+```
+
+This pulls the latest commits and applies them via `home-manager switch`. Idempotent — safe to run anytime.
+
 ## Updates
 
 See [UPDATES.md](./UPDATES.md).
