@@ -126,6 +126,7 @@
   };
 
   home.shellAliases = {
+    g = "git";
     lg = "lazygit log";
     gst = "git status";
     gd = "git diff";
@@ -143,6 +144,7 @@
     opentofu
     rustup
     fnm
+    protobuf
   ];
 
   home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
