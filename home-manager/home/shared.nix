@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -22,6 +22,7 @@
       };
       interactive.singlekey = true;
     };
+    includes = [{ path = "~/.config/git/config.local"; }];
   };
 
   programs.lazygit.enable = true;
@@ -125,6 +126,7 @@
   };
 
   home.shellAliases = {
+    g = "git";
     lg = "lazygit log";
     gst = "git status";
     gd = "git diff";
@@ -138,11 +140,15 @@
     bat
     tree
     dust
-    pwgen
     awscli2
     opentofu
     rustup
     fnm
+    protobuf
   ];
+
+  home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    [ -f "$HOME/.zshrc.local" ] || run touch "$HOME/.zshrc.local"
+  '';
 }
 

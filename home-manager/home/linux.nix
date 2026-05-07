@@ -5,6 +5,7 @@ in
 {
   home.packages = with pkgs; [
     wl-clipboard
+    pwgen
   ];
 
   dconf.settings = {

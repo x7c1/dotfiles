@@ -1,0 +1,4 @@
+cask "codex"
+cask "docker-desktop"
+cask "ghostty"
+cask "karabiner-elements"
