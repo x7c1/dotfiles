@@ -17,7 +17,7 @@ jobs:
 
       - uses: DeterminateSystems/nix-installer-action@main
 
-      - uses: DeterminateSystems/update-flake-lock-action@main
+      - uses: DeterminateSystems/update-flake-lock@main
         with:
           path-to-flake-dir: home-manager
           pr-title: "chore: bump flake inputs"
