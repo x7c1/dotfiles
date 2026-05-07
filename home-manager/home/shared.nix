@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 {
   home.stateVersion = "25.05";
 
@@ -144,5 +144,9 @@
     rustup
     fnm
   ];
+
+  home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    [ -f "$HOME/.zshrc.local" ] || run touch "$HOME/.zshrc.local"
+  '';
 }
 
