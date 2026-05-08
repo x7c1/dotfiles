@@ -25,7 +25,12 @@
     includes = [{ path = "~/.config/git/config.local"; }];
   };
 
-  programs.lazygit.enable = true;
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.enlargedSideViewLocation = "top";
+    };
+  };
 
   programs.gh.enable = true;
 
