@@ -15,7 +15,7 @@ if command -v gh >/dev/null 2>&1; then
     host=$(detect_host) || exit 1
     gh pr checkout "$pr_number"
     (cd home-manager && nix build ".#homeConfigurations.\"$host\".activationPackage" --no-link)
-    git checkout master
+    git checkout main
     gh pr merge "$pr_number" --squash --delete-branch
   fi
 fi
