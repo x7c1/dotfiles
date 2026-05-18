@@ -150,6 +150,7 @@
     rustup
     fnm
     protobuf
+    gnumake
   ];
 
   home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
