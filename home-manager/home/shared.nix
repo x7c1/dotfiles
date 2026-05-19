@@ -151,6 +151,7 @@
     fnm
     protobuf
     gnumake
+    gcc
   ];
 
   home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
