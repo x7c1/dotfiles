@@ -31,5 +31,19 @@
     "key": "alt+right",
     "mac": "cmd+right",
     "command": "workbench.action.navigateForward"
+  },
+  // alt+up / alt+down (cmd+arrow on macOS) -> Smart Select expand / shrink,
+  // i.e. IntelliJ-style "extend selection" that grows by syntax scope.
+  {
+    "key": "alt+up",
+    "mac": "cmd+up",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+down",
+    "mac": "cmd+down",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
   }
 ]
