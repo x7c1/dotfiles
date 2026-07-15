@@ -46,11 +46,13 @@
     "command": "editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
   },
-  // macOS only: ctrl+t -> show the editor context menu. No "key" default, so
-  // Linux/Windows keep ctrl+t as the built-in Go to Symbol in Workspace.
+  // macOS only: ctrl+t -> show the editor context menu. A "key" default is
+  // required for the binding to register at all, so we set it and gate the
+  // command on isMac. On Linux/Windows the "when" is false, leaving ctrl+t as
+  // the built-in Go to Symbol in Workspace.
   {
-    "mac": "ctrl+t",
+    "key": "ctrl+t",
     "command": "editor.action.showContextMenu",
-    "when": "textInputFocus"
+    "when": "textInputFocus && isMac"
   }
 ]
