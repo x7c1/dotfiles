@@ -1,0 +1,56 @@
+// Place your key bindings in this file to override the defaults
+//
+// Shared keybindings: commit these so every machine gets them.
+// Experimental keybindings: edit in the VS Code UI and leave the resulting
+// diff uncommitted (discard with `git checkout` when you're done trying it).
+//
+// Per-OS keys: "key" is the default (used on Linux/Windows); "mac" overrides
+// it on macOS. So one shared file covers ctrl+b on Linux and cmd+b on macOS.
+[
+  // ctrl+b (Linux) / cmd+b (macOS) -> Go to Definition.
+  {
+    "key": "ctrl+b",
+    "mac": "cmd+b",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  // Drop the default sidebar toggle on the same chord so the binding above is
+  // unambiguous (default is ctrl+b on Linux, cmd+b on macOS).
+  {
+    "key": "ctrl+b",
+    "mac": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  // alt+arrow (Linux/Windows) / cmd+arrow (macOS) -> navigate Back / Forward.
+  {
+    "key": "alt+left",
+    "mac": "cmd+left",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "alt+right",
+    "mac": "cmd+right",
+    "command": "workbench.action.navigateForward"
+  },
+  // alt+up / alt+down (cmd+arrow on macOS) -> Smart Select expand / shrink,
+  // i.e. IntelliJ-style "extend selection" that grows by syntax scope.
+  {
+    "key": "alt+up",
+    "mac": "cmd+up",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+down",
+    "mac": "cmd+down",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
+  },
+  // macOS only: ctrl+t -> show the editor context menu. No "key" default, so
+  // Linux/Windows keep ctrl+t as the built-in Go to Symbol in Workspace.
+  {
+    "mac": "ctrl+t",
+    "command": "editor.action.showContextMenu",
+    "when": "textInputFocus"
+  }
+]

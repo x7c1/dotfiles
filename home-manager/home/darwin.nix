@@ -22,4 +22,12 @@
   xdg.configFile."karabiner/karabiner.json".source =
     config.lib.file.mkOutOfStoreSymlink
       "${config.home.homeDirectory}/.config/home-manager/../macos/karabiner/karabiner.json";
+
+  # Same out-of-store symlink for VS Code keybindings. On macOS VS Code reads
+  # them from ~/Library/Application Support (not ~/.config), so this lives in
+  # home.file rather than xdg.configFile. Points at the same shared repo file
+  # as linux.nix, so the bindings stay in sync across machines.
+  home.file."Library/Application Support/Code/User/keybindings.json".source =
+    config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/.config/home-manager/../config/vscode/keybindings.json";
 }
