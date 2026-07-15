@@ -45,5 +45,12 @@
     "mac": "cmd+down",
     "command": "editor.action.smartSelect.shrink",
     "when": "editorTextFocus"
+  },
+  // macOS only: ctrl+t -> show the editor context menu. No "key" default, so
+  // Linux/Windows keep ctrl+t as the built-in Go to Symbol in Workspace.
+  {
+    "mac": "ctrl+t",
+    "command": "editor.action.showContextMenu",
+    "when": "textInputFocus"
   }
 ]
