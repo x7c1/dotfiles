@@ -4,52 +4,79 @@
 // Experimental keybindings: edit in the VS Code UI and leave the resulting
 // diff uncommitted (discard with `git checkout` when you're done trying it).
 //
-// Per-OS keys: "key" is the default (used on Linux/Windows); "mac" overrides
-// it on macOS. So one shared file covers ctrl+b on Linux and cmd+b on macOS.
+// Per-OS keys: VS Code's user keybindings.json does NOT honor the "mac" /
+// "linux" / "win" platform fields (those only work in an extension's default
+// keybindings). So we split each binding per OS and gate it with `when`:
+// `isMac` for macOS, `!isMac` for Linux/Windows.
 [
-  // ctrl+b (Linux) / cmd+b (macOS) -> Go to Definition.
+  // ctrl+b (Linux/Windows) / cmd+b (macOS) -> Go to Definition.
+  // We also drop the default sidebar toggle on the same chord so the binding
+  // above is unambiguous (default toggle is ctrl+b on Linux, cmd+b on macOS).
   {
-    "key": "ctrl+b",
-    "mac": "cmd+b",
+    "key": "cmd+b",
     "command": "editor.action.revealDefinition",
-    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && isMac"
   },
-  // Drop the default sidebar toggle on the same chord so the binding above is
-  // unambiguous (default is ctrl+b on Linux, cmd+b on macOS).
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility",
+    "when": "isMac"
+  },
   {
     "key": "ctrl+b",
-    "mac": "cmd+b",
-    "command": "-workbench.action.toggleSidebarVisibility"
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && !isMac"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility",
+    "when": "!isMac"
   },
   // alt+arrow (Linux/Windows) / cmd+arrow (macOS) -> navigate Back / Forward.
   {
+    "key": "cmd+left",
+    "command": "workbench.action.navigateBack",
+    "when": "isMac"
+  },
+  {
+    "key": "cmd+right",
+    "command": "workbench.action.navigateForward",
+    "when": "isMac"
+  },
+  {
     "key": "alt+left",
-    "mac": "cmd+left",
-    "command": "workbench.action.navigateBack"
+    "command": "workbench.action.navigateBack",
+    "when": "!isMac"
   },
   {
     "key": "alt+right",
-    "mac": "cmd+right",
-    "command": "workbench.action.navigateForward"
+    "command": "workbench.action.navigateForward",
+    "when": "!isMac"
   },
   // alt+up / alt+down (cmd+arrow on macOS) -> Smart Select expand / shrink,
   // i.e. IntelliJ-style "extend selection" that grows by syntax scope.
   {
-    "key": "alt+up",
-    "mac": "cmd+up",
+    "key": "cmd+up",
     "command": "editor.action.smartSelect.expand",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && isMac"
+  },
+  {
+    "key": "cmd+down",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus && isMac"
+  },
+  {
+    "key": "alt+up",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus && !isMac"
   },
   {
     "key": "alt+down",
-    "mac": "cmd+down",
     "command": "editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus && !isMac"
   },
-  // macOS only: ctrl+t -> show the editor context menu. A "key" default is
-  // required for the binding to register at all, so we set it and gate the
-  // command on isMac. On Linux/Windows the "when" is false, leaving ctrl+t as
-  // the built-in Go to Symbol in Workspace.
+  // macOS only: ctrl+t -> show the editor context menu. On Linux/Windows the
+  // "when" is false, leaving ctrl+t as the built-in Go to Symbol in Workspace.
   {
     "key": "ctrl+t",
     "command": "editor.action.showContextMenu",
