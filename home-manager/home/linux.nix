@@ -24,7 +24,7 @@ in
     "org/gnome/mutter".edge-tiling = false;
     "org/gnome/shell/overrides".edge-tiling = false;
     "org/gnome/settings-daemon/plugins/power" = {
-      sleep-inactive-ac-timeout = mkInt32 (6 * 60 * 60);
+      sleep-inactive-ac-timeout = mkInt32 (12 * 60 * 60);
       sleep-inactive-ac-type = "suspend";
     };
     "org/gnome/desktop/screensaver".lock-delay = mkUint32 (4 * 60 * 60);
