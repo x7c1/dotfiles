@@ -23,6 +23,11 @@
           module = ./hosts/ubuntu.nix;
         };
 
+        "x7c1@ubuntu-laptop" = mkHome {
+          system = "x86_64-linux";
+          module = ./hosts/ubuntu-laptop.nix;
+        };
+
         "x7c1@macos" = mkHome {
           system = "aarch64-darwin";
           module = ./hosts/macos.nix;
