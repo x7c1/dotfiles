@@ -6,11 +6,6 @@ in
   home.packages = with pkgs; [
     wl-clipboard
     pwgen
-
-    # Linux only: macOS installs codex from the Homebrew cask instead, which
-    # tracks upstream releases within a day. nixpkgs lags by up to the
-    # bi-weekly flake.lock bump, and codex ships several releases a week.
-    codex
   ];
 
   # Out-of-store symlink so VS Code's GUI writes through to the repo file
@@ -26,6 +21,7 @@ in
       repeat-interval = mkUint32 30;
       delay = mkUint32 175;
     };
+    "org/gnome/desktop/interface".cursor-size = mkInt32 64;
     "org/gnome/mutter".edge-tiling = false;
     "org/gnome/shell/overrides".edge-tiling = false;
     "org/gnome/settings-daemon/plugins/power" = {

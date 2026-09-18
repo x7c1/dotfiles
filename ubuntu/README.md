@@ -22,7 +22,7 @@ Tested on Ubuntu 26.04 (Wayland session).
 
    ```sh
    ssh-keygen -t ed25519
-   nix run nixpkgs#wl-clipboard -- wl-copy < ~/.ssh/id_ed25519.pub
+   nix shell nixpkgs#wl-clipboard --command wl-copy < ~/.ssh/id_ed25519.pub
    # Paste into https://github.com/settings/keys
    ```
 
@@ -32,13 +32,22 @@ Tested on Ubuntu 26.04 (Wayland session).
    nix run nixpkgs#git -- clone git@github.com:x7c1/dotfiles.git /path/to/dotfiles
    ```
 
-5. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
+5. **Pick a host profile** (laptops only). `scripts/lib/host.sh` defaults every
+   Linux machine to `x7c1@ubuntu`; machines that need another profile record it
+   once, and every later `setup-home-manager.sh` / `sync.sh` run picks it up:
+
+   ```sh
+   mkdir -p ~/.config/dotfiles
+   echo "x7c1@ubuntu-laptop" > ~/.config/dotfiles/host
+   ```
+
+6. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
 
    ```sh
    /path/to/dotfiles/scripts/setup-home-manager.sh
    ```
 
-6. **Switch login shell to zsh**:
+7. **Switch login shell to zsh**:
 
    ```sh
    echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
@@ -47,7 +56,27 @@ Tested on Ubuntu 26.04 (Wayland session).
 
    Log out and back in for `$SHELL` to update.
 
-## Optional steps
+## System-level apps (not Nix-managed)
+
+Installed on every Ubuntu machine. Run them all at once:
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-all.sh
+```
+
+or one at a time with the scripts below. Each script skips or re-applies
+harmlessly when the tool is already there, so rerunning is safe.
+
+### Codex CLI (user-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-codex.sh
+```
+
+Installed with OpenAI's standalone installer into `~/.local/bin`, which
+already sits on `home.sessionPath`, so the installer leaves shell profiles
+alone. Codex then updates itself; nixpkgs would lag by up to the bi-weekly
+`flake.lock` bump, and codex ships several releases a week.
 
 ### Docker (system-level, not Nix-managed)
 
@@ -57,12 +86,51 @@ Tested on Ubuntu 26.04 (Wayland session).
 
 Log out and back in (or `newgrp docker`) for the docker group to take effect.
 
+### Ghostty (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-ghostty.sh
+```
+
+Installed from the [mkasberg/ghostty-ubuntu](https://github.com/mkasberg/ghostty-ubuntu)
+PPA rather than Nix: a Nix-built Ghostty uses its own GTK4, which cannot load
+the apt Fcitx5 IM module, and needs nixGL to reach the host GPU drivers.
+Updates flow through `sudo apt upgrade`.
+
+### Google Chrome (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-chrome.sh
+```
+
+Installs Google's `.deb`, which registers Google's apt repository, so
+updates flow through `sudo apt upgrade`.
+
+### Japanese input (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-fcitx5.sh
+```
+
+Fcitx5 and Mozc come from apt because the system GTK/Qt only load IM modules
+from their own `/usr/lib` immodules cache, so Nix-built frontends stay invisible
+to apt-installed apps. On the `x7c1@ubuntu-laptop` profile, home-manager also
+manages the fonts, the `*_IM_MODULE` session variables and the JIS layout
+(`home-manager/home/linux-japanese.nix`).
+
+Install the [Kimpanel](https://extensions.gnome.org/extension/261/kimpanel/)
+GNOME Shell extension by hand from Extension Manager, which the script
+installs (the browser install button on extensions.gnome.org needs extra
+setup).
+GNOME/Wayland does not let Fcitx5 place its own candidate window, so without
+it the candidates can appear away from the cursor.
+
 ### Visual Studio Code (system-level, not Nix-managed)
 
 ```sh
 /path/to/dotfiles/ubuntu/scripts/install-vscode.sh
 ```
 
-Updates flow through apt; run `sudo apt upgrade` (or enable unattended
-upgrades for `packages.microsoft.com`) to keep `code` current.
+Updates flow through apt; run `sudo apt upgrade` (or add `"code stable:stable"`
+to `Unattended-Upgrade::Allowed-Origins`) to keep `code` current.
 

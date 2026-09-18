@@ -1,4 +1,5 @@
 cask "codex"
 cask "docker-desktop"
 cask "ghostty"
+cask "google-chrome"
 cask "karabiner-elements"

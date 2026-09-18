@@ -12,13 +12,10 @@ if command -v docker >/dev/null 2>&1; then
 fi
 
 sudo apt update
-sudo apt install -y docker.io docker-compose-v2
+sudo apt install -y docker.io docker-compose-v2 docker-buildx
 
 sudo systemctl enable --now docker
 
-if ! getent group docker >/dev/null; then
-  sudo addgroup --system docker
-fi
 sudo adduser "$USER" docker
 
 cat <<'EOF'
