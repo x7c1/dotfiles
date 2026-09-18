@@ -2,7 +2,7 @@
   imports = [
     ../home/shared.nix
     ../home/linux.nix
-    ../home/input-method.nix
+    ../home/japanese.nix
   ];
 
   home.username = "x7c1";

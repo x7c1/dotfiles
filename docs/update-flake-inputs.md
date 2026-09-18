@@ -4,6 +4,8 @@ The exact commit of `nixpkgs`, `home-manager`, and other inputs is pinned in `ho
 
 Routine bumps land automatically: the [`update-flake-lock` workflow](../.github/workflows/update-flake-lock.yml) opens a PR roughly every two weeks, and `./scripts/sync.sh` accepts the pending PR and applies it on the local machine. This document covers the manual procedures for cases that fall outside that flow — bumping ahead of schedule, bumping a single input, or rolling back a bad lock.
 
+The `#x7c1@ubuntu` suffix below is the configuration name for a plain Ubuntu box. On a machine that records another profile in `~/.config/dotfiles/host` (see [ubuntu/README.md](../ubuntu/README.md)), substitute that name — `./scripts/sync.sh` already reads it.
+
 ## Bump everything
 
 ```sh

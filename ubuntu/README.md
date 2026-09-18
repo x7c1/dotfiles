@@ -32,13 +32,22 @@ Tested on Ubuntu 26.04 (Wayland session).
    nix run nixpkgs#git -- clone git@github.com:x7c1/dotfiles.git /path/to/dotfiles
    ```
 
-5. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
+5. **Pick a host profile** (laptops only). `scripts/lib/host.sh` defaults every
+   Linux machine to `x7c1@ubuntu`; machines that need another profile record it
+   once, and every later `setup-home-manager.sh` / `sync.sh` run picks it up:
+
+   ```sh
+   mkdir -p ~/.config/dotfiles
+   echo "x7c1@ubuntu-laptop" > ~/.config/dotfiles/host
+   ```
+
+6. **Set up home-manager** (links `~/.config/home-manager` and runs the first switch):
 
    ```sh
    /path/to/dotfiles/scripts/setup-home-manager.sh
    ```
 
-6. **Switch login shell to zsh**:
+7. **Switch login shell to zsh**:
 
    ```sh
    echo "$HOME/.nix-profile/bin/zsh" | sudo tee -a /etc/shells
@@ -56,6 +65,19 @@ Tested on Ubuntu 26.04 (Wayland session).
 ```
 
 Log out and back in (or `newgrp docker`) for the docker group to take effect.
+
+### Japanese input (system-level, not Nix-managed)
+
+Only for the `x7c1@ubuntu-laptop` profile.
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-fcitx5.sh
+```
+
+Fcitx5 and Mozc come from apt because the system GTK/Qt only load IM modules
+from their own `/usr/lib` immodules cache, so Nix-built frontends stay invisible
+to apt-installed apps. home-manager keeps the fonts, the `*_IM_MODULE` session
+variables and the JIS layout (`home-manager/home/japanese.nix`).
 
 ### Visual Studio Code (system-level, not Nix-managed)
 
