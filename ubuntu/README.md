@@ -66,6 +66,17 @@ Tested on Ubuntu 26.04 (Wayland session).
 
 Log out and back in (or `newgrp docker`) for the docker group to take effect.
 
+### Ghostty (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-ghostty.sh
+```
+
+Installed from the [mkasberg/ghostty-ubuntu](https://github.com/mkasberg/ghostty-ubuntu)
+PPA rather than Nix: a Nix-built Ghostty uses its own GTK4, which cannot load
+the apt Fcitx5 IM module, and needs nixGL to reach the host GPU drivers.
+Updates flow through `sudo apt upgrade`.
+
 ### Japanese input (system-level, not Nix-managed)
 
 Only for the `x7c1@ubuntu-laptop` profile.
