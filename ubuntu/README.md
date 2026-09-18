@@ -119,7 +119,9 @@ manages the fonts, the `*_IM_MODULE` session variables and the JIS layout
 (`home-manager/home/linux-japanese.nix`).
 
 Install the [Kimpanel](https://extensions.gnome.org/extension/261/kimpanel/)
-GNOME Shell extension by hand (Extension Manager or extensions.gnome.org).
+GNOME Shell extension by hand from Extension Manager, which the script
+installs (the browser install button on extensions.gnome.org needs extra
+setup).
 GNOME/Wayland does not let Fcitx5 place its own candidate window, so without
 it the candidates can appear away from the cursor.
 

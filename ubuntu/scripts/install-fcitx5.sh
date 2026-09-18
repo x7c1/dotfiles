@@ -17,6 +17,7 @@ sudo apt install -y \
   fcitx5-frontend-gtk4 \
   fcitx5-frontend-qt5 \
   fcitx5-frontend-qt6 \
+  gnome-shell-extension-manager \
   im-config
 
 # Select Fcitx5 as the session input method (writes ~/.xinputrc).
@@ -37,4 +38,7 @@ Log out and back in, then add Mozc as an input method:
 
 Keep "Keyboard - Japanese" first and Mozc second in the default group, so
 Ctrl+Space toggles between direct input and Japanese.
+
+Then install the Kimpanel GNOME Shell extension ("Input Method Panel") from
+Extension Manager, so candidate windows follow the cursor on Wayland.
 MSG
