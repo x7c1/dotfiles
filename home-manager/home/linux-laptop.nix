@@ -56,6 +56,9 @@ in
   # modifier-only hotkeys on release when no other key was pressed. Only the
   # global config is managed; the input method list (profile) stays editable
   # in fcitx5-configtool. AltTriggerKeys defaults to Shift_L, so clear it.
+  # AllowOverrideXKB=False keeps Fcitx5 from writing its group layout into
+  # org.gnome.desktop.input-sources: its first-run profile defaults to
+  # keyboard-us, which would replace the jp source set in linux-japanese.nix.
   # force: Fcitx5 writes this file on first run, which would otherwise block
   # activation.
   xdg.configFile."fcitx5/config" = {
@@ -69,6 +72,9 @@ in
 
       [Hotkey/DeactivateKeys]
       0=Shift_L
+
+      [Behavior]
+      AllowOverrideXKB=False
     '';
   };
 }
