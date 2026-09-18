@@ -96,6 +96,6 @@ variables and the JIS layout (`home-manager/home/linux-japanese.nix`).
 /path/to/dotfiles/ubuntu/scripts/install-vscode.sh
 ```
 
-Updates flow through apt; run `sudo apt upgrade` (or enable unattended
-upgrades for `packages.microsoft.com`) to keep `code` current.
+Updates flow through apt; run `sudo apt upgrade` (or add `"code stable:stable"`
+to `Unattended-Upgrade::Allowed-Origins`) to keep `code` current.
 
