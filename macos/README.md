@@ -41,9 +41,10 @@ Tested on macOS 26 (aarch64-darwin).
 ```
 
 Installs Homebrew itself (if missing) and applies `macos/Brewfile`
-(`codex`, `docker-desktop`, `ghostty`, `karabiner-elements`). Karabiner
-needs a one-time DriverKit System Extension approval in System Settings →
-Privacy & Security after the first install.
+(`codex`, `docker-desktop`, `ghostty`, `google-chrome`,
+`karabiner-elements`). Karabiner needs a one-time DriverKit System
+Extension approval in System Settings → Privacy & Security after the
+first install.
 
 For host-local casks/formulae that are not shared across machines,
 create `macos/Brewfile.local` (gitignored). It is applied after the

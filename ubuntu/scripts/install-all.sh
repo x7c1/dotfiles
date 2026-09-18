@@ -9,6 +9,7 @@ set -eu
 dir="$(cd "$(dirname "$0")" && pwd)"
 
 for script in \
+  install-chrome.sh \
   install-codex.sh \
   install-docker.sh \
   install-fcitx5.sh \

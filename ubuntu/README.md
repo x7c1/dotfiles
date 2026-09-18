@@ -97,6 +97,15 @@ PPA rather than Nix: a Nix-built Ghostty uses its own GTK4, which cannot load
 the apt Fcitx5 IM module, and needs nixGL to reach the host GPU drivers.
 Updates flow through `sudo apt upgrade`.
 
+### Google Chrome (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-chrome.sh
+```
+
+Installs Google's `.deb`, which registers Google's apt repository, so
+updates flow through `sudo apt upgrade`.
+
 ### Japanese input (system-level, not Nix-managed)
 
 ```sh
