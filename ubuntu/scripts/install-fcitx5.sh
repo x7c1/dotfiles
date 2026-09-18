@@ -22,6 +22,11 @@ sudo apt install -y \
 # Select Fcitx5 as the session input method (writes ~/.xinputrc).
 im-config -n fcitx5
 
+# Start Fcitx5 at login. im-config does not on GNOME: its im-launch
+# autostart entry runs /usr/bin/true.
+mkdir -p "$HOME/.config/autostart"
+cp /usr/share/applications/org.fcitx.Fcitx5.desktop "$HOME/.config/autostart/"
+
 cat <<'MSG'
 
 Fcitx5 installed.
