@@ -17,4 +17,8 @@ in
   dconf.settings."org/gnome/desktop/session".idle-delay = mkUint32 (5 * 60);
   dconf.settings."org/gnome/desktop/screensaver".lock-delay =
     lib.mkForce (mkUint32 (5 * 60));
+
+  # Smaller pointer than linux.nix's 64 for the laptop's smaller screen.
+  dconf.settings."org/gnome/desktop/interface".cursor-size =
+    lib.mkForce (mkInt32 48);
 }

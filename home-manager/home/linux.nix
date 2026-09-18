@@ -21,6 +21,7 @@ in
       repeat-interval = mkUint32 30;
       delay = mkUint32 175;
     };
+    "org/gnome/desktop/interface".cursor-size = mkInt32 64;
     "org/gnome/mutter".edge-tiling = false;
     "org/gnome/shell/overrides".edge-tiling = false;
     "org/gnome/settings-daemon/plugins/power" = {
