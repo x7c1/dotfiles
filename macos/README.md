@@ -45,11 +45,6 @@ Installs Homebrew itself (if missing) and applies `macos/Brewfile`
 needs a one-time DriverKit System Extension approval in System Settings →
 Privacy & Security after the first install.
 
-`codex` is the one CLI here rather than in `home-manager/home/shared.nix`:
-the cask tracks upstream releases within a day, while nixpkgs lags by up to
-the bi-weekly `flake.lock` bump. Linux hosts have no Homebrew, so they use
-the official standalone installer instead (`ubuntu/scripts/install-codex.sh`).
-
 For host-local casks/formulae that are not shared across machines,
 create `macos/Brewfile.local` (gitignored). It is applied after the
 shared `Brewfile`. Example:
