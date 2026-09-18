@@ -153,7 +153,6 @@
     protobuf
     gnumake
     gcc
-    codex
   ];
 
   home.activation.createZshrcLocal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

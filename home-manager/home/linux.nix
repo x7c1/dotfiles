@@ -6,6 +6,11 @@ in
   home.packages = with pkgs; [
     wl-clipboard
     pwgen
+
+    # Linux only: macOS installs codex from the Homebrew cask instead, which
+    # tracks upstream releases within a day. nixpkgs lags by up to the
+    # bi-weekly flake.lock bump, and codex ships several releases a week.
+    codex
   ];
 
   # Out-of-store symlink so VS Code's GUI writes through to the repo file
