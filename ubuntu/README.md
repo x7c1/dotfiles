@@ -118,6 +118,11 @@ to apt-installed apps. On the `x7c1@ubuntu-laptop` profile, home-manager also
 manages the fonts, the `*_IM_MODULE` session variables and the JIS layout
 (`home-manager/home/linux-japanese.nix`).
 
+Install the [Kimpanel](https://extensions.gnome.org/extension/261/kimpanel/)
+GNOME Shell extension by hand (Extension Manager or extensions.gnome.org).
+GNOME/Wayland does not let Fcitx5 place its own candidate window, so without
+it the candidates can appear away from the cursor.
+
 ### Visual Studio Code (system-level, not Nix-managed)
 
 ```sh
