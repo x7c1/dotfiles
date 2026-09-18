@@ -77,7 +77,7 @@ Only for the `x7c1@ubuntu-laptop` profile.
 Fcitx5 and Mozc come from apt because the system GTK/Qt only load IM modules
 from their own `/usr/lib` immodules cache, so Nix-built frontends stay invisible
 to apt-installed apps. home-manager keeps the fonts, the `*_IM_MODULE` session
-variables and the JIS layout (`home-manager/home/japanese.nix`).
+variables and the JIS layout (`home-manager/home/linux-japanese.nix`).
 
 ### Visual Studio Code (system-level, not Nix-managed)
 

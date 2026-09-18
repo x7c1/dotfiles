@@ -2,7 +2,7 @@
   imports = [
     ../home/shared.nix
     ../home/linux.nix
-    ../home/japanese.nix
+    ../home/linux-japanese.nix
     ../home/linux-laptop.nix
   ];
 

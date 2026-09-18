@@ -4,7 +4,7 @@
 # that home-manager cannot manage on non-NixOS: the system GTK/Qt only load
 # IM modules from their own /usr/lib immodules cache, so the frontends have
 # to come from apt. home-manager still owns the fonts, the session variables
-# and the GNOME settings (home-manager/home/japanese.nix).
+# and the GNOME settings (home-manager/home/linux-japanese.nix).
 
 set -eux
 
