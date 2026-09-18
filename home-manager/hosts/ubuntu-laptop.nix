@@ -3,6 +3,7 @@
     ../home/shared.nix
     ../home/linux.nix
     ../home/japanese.nix
+    ../home/linux-laptop.nix
   ];
 
   home.username = "x7c1";
