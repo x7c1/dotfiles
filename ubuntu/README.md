@@ -22,7 +22,7 @@ Tested on Ubuntu 26.04 (Wayland session).
 
    ```sh
    ssh-keygen -t ed25519
-   nix run nixpkgs#wl-clipboard -- wl-copy < ~/.ssh/id_ed25519.pub
+   nix shell nixpkgs#wl-clipboard --command wl-copy < ~/.ssh/id_ed25519.pub
    # Paste into https://github.com/settings/keys
    ```
 
