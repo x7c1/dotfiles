@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Run every system-level install script in this directory. Each one skips
+# Run every install script in this directory. Each one skips
 # or re-applies harmlessly on a machine that already has the tool, so this
 # is safe to rerun. Stops at the first failure.
 
@@ -9,6 +9,7 @@ set -eu
 dir="$(cd "$(dirname "$0")" && pwd)"
 
 for script in \
+  install-codex.sh \
   install-docker.sh \
   install-fcitx5.sh \
   install-ghostty.sh \

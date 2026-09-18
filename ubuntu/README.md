@@ -67,6 +67,17 @@ Installed on every Ubuntu machine. Run them all at once:
 or one at a time with the scripts below. Each script skips or re-applies
 harmlessly when the tool is already there, so rerunning is safe.
 
+### Codex CLI (user-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-codex.sh
+```
+
+Installed with OpenAI's standalone installer into `~/.local/bin`, which
+already sits on `home.sessionPath`, so the installer leaves shell profiles
+alone. Codex then updates itself; nixpkgs would lag by up to the bi-weekly
+`flake.lock` bump, and codex ships several releases a week.
+
 ### Docker (system-level, not Nix-managed)
 
 ```sh
