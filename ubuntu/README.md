@@ -56,7 +56,16 @@ Tested on Ubuntu 26.04 (Wayland session).
 
    Log out and back in for `$SHELL` to update.
 
-## Optional steps
+## System-level apps (not Nix-managed)
+
+Installed on every Ubuntu machine. Run them all at once:
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-all.sh
+```
+
+or one at a time with the scripts below. Each script skips or re-applies
+harmlessly when the tool is already there, so rerunning is safe.
 
 ### Docker (system-level, not Nix-managed)
 
@@ -79,16 +88,15 @@ Updates flow through `sudo apt upgrade`.
 
 ### Japanese input (system-level, not Nix-managed)
 
-Only for the `x7c1@ubuntu-laptop` profile.
-
 ```sh
 /path/to/dotfiles/ubuntu/scripts/install-fcitx5.sh
 ```
 
 Fcitx5 and Mozc come from apt because the system GTK/Qt only load IM modules
 from their own `/usr/lib` immodules cache, so Nix-built frontends stay invisible
-to apt-installed apps. home-manager keeps the fonts, the `*_IM_MODULE` session
-variables and the JIS layout (`home-manager/home/linux-japanese.nix`).
+to apt-installed apps. On the `x7c1@ubuntu-laptop` profile, home-manager also
+manages the fonts, the `*_IM_MODULE` session variables and the JIS layout
+(`home-manager/home/linux-japanese.nix`).
 
 ### Visual Studio Code (system-level, not Nix-managed)
 
