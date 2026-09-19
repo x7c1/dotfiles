@@ -106,6 +106,15 @@ Updates flow through `sudo apt upgrade`.
 Installs Google's `.deb`, which registers Google's apt repository, so
 updates flow through `sudo apt upgrade`.
 
+### Vivaldi (system-level, not Nix-managed)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-vivaldi.sh
+```
+
+Installs Vivaldi's `.deb`, which installs its signing key and registers
+Vivaldi's apt repository, so updates flow through `sudo apt upgrade`.
+
 ### Japanese input (system-level, not Nix-managed)
 
 ```sh
