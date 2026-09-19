@@ -14,6 +14,7 @@ for script in \
   install-docker.sh \
   install-fcitx5.sh \
   install-ghostty.sh \
+  install-vivaldi.sh \
   install-vscode.sh
 do
   echo "==> $script"

@@ -42,7 +42,7 @@ Tested on macOS 26 (aarch64-darwin).
 
 Installs Homebrew itself (if missing) and applies `macos/Brewfile`
 (`codex`, `docker-desktop`, `ghostty`, `google-chrome`,
-`karabiner-elements`). Karabiner needs a one-time DriverKit System
+`karabiner-elements`, `vivaldi`). Karabiner needs a one-time DriverKit System
 Extension approval in System Settings → Privacy & Security after the
 first install.
 
