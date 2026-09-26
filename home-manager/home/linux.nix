@@ -8,6 +8,14 @@ in
     pwgen
   ];
 
+  # apt upgrade that refuses a kernel-only upgrade on a machine with the
+  # pre-built NVIDIA modules (ubuntu/scripts/apt-upgrade-safe.sh).
+  # A plain apt upgrade elsewhere.
+  home.file.".local/bin/apt-upgrade-safe" = {
+    source = ../../ubuntu/scripts/apt-upgrade-safe.sh;
+    executable = true;
+  };
+
   # Out-of-store symlink so VS Code's GUI writes through to the repo file
   # (same pattern as nvim/lazy-lock.json in shared.nix). On Linux VS Code
   # reads keybindings from ~/.config/Code/User/keybindings.json. Commit the

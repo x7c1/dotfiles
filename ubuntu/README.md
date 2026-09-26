@@ -143,3 +143,24 @@ it the candidates can appear away from the cursor.
 Updates flow through apt; run `sudo apt upgrade` (or add `"code stable:stable"`
 to `Unattended-Upgrade::Allowed-Origins`) to keep `code` current.
 
+### Kernel and NVIDIA driver updates (system-level, NVIDIA machines only)
+
+```sh
+/path/to/dotfiles/ubuntu/scripts/install-kernel-nvidia-lockstep.sh
+```
+
+Keeps the kernel meta packages out of `unattended-upgrades`, so a new kernel
+only arrives automatically together with the pre-built NVIDIA modules built
+for it. Not part of `install-all.sh` because it changes the update policy;
+the script exits without doing anything on a machine without the NVIDIA
+module meta package.
+
+For manual updates use `apt-upgrade-safe` (home-manager puts it on the PATH
+from `ubuntu/scripts/apt-upgrade-safe.sh`). It simulates the upgrade and
+refuses to run when a new kernel would come in without its NVIDIA modules.
+
+Why: the pre-built modules are pinned to one NVIDIA userspace version, and
+when a driver point release lands together with a kernel update,
+`unattended-upgrades` holds the whole NVIDIA stack back but still upgrades the
+kernel. The next boot then has no NVIDIA driver and falls back to a 800x600
+`simpledrm` desktop (it happened here with 7.0.0-31 to 7.0.0-34).
