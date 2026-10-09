@@ -7,6 +7,12 @@
     doCheck = false;
   });
 
+  # Newer home-manager generates ~/.zprofile itself, so a hand-written one
+  # that put Homebrew on PATH would be clobbered. Keep that here instead.
+  programs.zsh.profileExtra = ''
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  '';
+
   targets.darwin.defaults = {
     NSGlobalDomain = {
       # Unit: 1/60 sec ticks (~16.67ms), not ms.
