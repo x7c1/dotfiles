@@ -1,22 +1,8 @@
 #!/bin/sh
 #
-# apt full-upgrade that refuses to install a kernel whose pre-built NVIDIA
-# modules would not come along. It simulates the upgrade first and checks that
-# every linux-image-<abi> in the plan is matched by
-# linux-modules-nvidia-<branch>-<abi>, either in the same plan or already
-# installed. The driver branch comes from the installed meta package, so
-# nothing is hard-coded. On a machine without the NVIDIA meta package this is
-# a plain apt full-upgrade, still limited to the removals described below.
-#
-# It plans a full-upgrade rather than an upgrade because a driver point
-# release breaks the pre-built modules of older kernels, which are pinned to
-# the previous userspace version. Those modules have to be removed for the
-# NVIDIA stack to move on, and neither `apt upgrade` nor unattended-upgrades
-# ever removes a package, so the whole stack (and, with the lockstep, the
-# kernel) stays held back. The only removals allowed are NVIDIA module
-# packages of kernels other than the running one; that kernel then boots
-# without the NVIDIA driver until it is removed. Any other removal stops the
-# script so the plan can be reviewed by hand.
+# apt full-upgrade that refuses a new kernel without its pre-built NVIDIA
+# modules, and any removal other than the NVIDIA modules of a kernel that is
+# not running. Why: ubuntu/README.md, "Kernel and NVIDIA driver updates".
 #
 # Usage: apt-upgrade-safe [apt full-upgrade options, e.g. -y]
 
@@ -63,6 +49,7 @@ running=$(uname -r)
 allowed=""
 unexpected=""
 for pkg in $(printf '%s\n' "$plan" | sed -n 's/^Remv \([^ ]*\) .*/\1/p'); do
+  # The running kernel's modules also match the next pattern, so this comes first.
   case "$pkg" in
     linux-modules-nvidia-*-"$running")
       unexpected="$unexpected $pkg"
