@@ -34,5 +34,5 @@ For cases that fall outside that flow (bumping ahead of schedule, bumping a sing
 - Rust toolchain — `rustup update`
 - Node.js — `fnm install --lts`
 - System packages
-  - Ubuntu — `sudo apt upgrade`
+  - Ubuntu — `apt-upgrade-safe` (see [Kernel and NVIDIA driver updates](./ubuntu/README.md#kernel-and-nvidia-driver-updates-system-level-nvidia-machines-only))
   - macOS — `softwareupdate -ia && brew upgrade`

@@ -156,8 +156,17 @@ the script exits without doing anything on a machine without the NVIDIA
 module meta package.
 
 For manual updates use `apt-upgrade-safe` (home-manager puts it on the PATH
-from `ubuntu/scripts/apt-upgrade-safe.sh`). It simulates the upgrade and
-refuses to run when a new kernel would come in without its NVIDIA modules.
+from `ubuntu/scripts/apt-upgrade-safe.sh`). It simulates a full-upgrade and
+refuses to run when a new kernel would come in without its NVIDIA modules,
+or when the upgrade would remove anything other than the NVIDIA modules of a
+kernel that is not running.
+
+Run it when a driver point release is out. The release breaks the pre-built
+modules of older kernels, which have to be removed for the NVIDIA stack to
+move on. `unattended-upgrades` never removes packages, so until
+`apt-upgrade-safe` runs, the NVIDIA stack and the kernel both stay held back
+(the log says the NVIDIA packages are "kept back"). The older kernel stays
+installed and boots without the NVIDIA driver afterwards.
 
 Why: the pre-built modules are pinned to one NVIDIA userspace version, and
 when a driver point release lands together with a kernel update,
